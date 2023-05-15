@@ -1,0 +1,35 @@
+module.exports = {
+  profile: {
+    name: "Tabatha Verlin",
+    classe: "Faussaire",
+    age: 18,
+    lifePoints: 8,
+  },
+
+  caracteristics: [
+    { id: 1, name: "Force", level: 4 },
+    { id: 2, name: "Dextérité", level: 16 },
+    { id: 3, name: "Endurance", level: 8 },
+    { id: 4, name: "Intelligence", level: 14 },
+    { id: 5, name: "Charisme", level: 18 },
+  ],
+  skills: [
+    { id: 6, name: "Artisanat/Construction", level: 85 },
+    { id: 7, name: "Combat à distance", level: 60 },
+    { id: 8, name: "Combat rapproché", level: 40 },
+    { id: 9, name: "Connaissance de la nature", level: 60 },
+    { id: 10, name: "Connaissance des secrets", level: 64 },
+    { id: 11, name: "Courir/Sauter", level: 48 },
+    { id: 12, name: "Discrétion", level: 68 },
+    { id: 13, name: "Esquiver", level: 60 },
+    { id: 14, name: "Intimider", level: 44 },
+    { id: 15, name: "Lire/Ecrire", level: 64 },
+    { id: 16, name: "Mentir/Convaincre", level: 89 },
+    { id: 17, name: "Perception", level: 64 },
+    { id: 18, name: "Psychologie", level: 60 },
+    { id: 19, name: "Réflexes", level: 60 },
+    { id: 20, name: "Serrures et pièges", level: 48 },
+    { id: 21, name: "Soigner", level: 64 },
+    { id: 22, name: "Voler", level: 60 },
+  ],
+};
