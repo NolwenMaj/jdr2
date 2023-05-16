@@ -8,7 +8,9 @@ export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [character_class, setCharacterClass] = useState("");
+  const [character_age, setCharacterAge] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
+  /* const [capacities,setCapacities]=useState ("") */
 
   useEffect(() => {
     if (session) getProfile();
@@ -21,7 +23,7 @@ export default function Account({ session }) {
 
       const { data, error, status } = await supabase
         .from("profiles")
-        .select(`username, character_class, avatar_url`)
+        .select(`username, character_class, character_age, avatar_url`)
         .eq("id", session?.user.id)
         .single();
 
@@ -32,6 +34,7 @@ export default function Account({ session }) {
       if (data) {
         setUsername(data.username);
         setCharacterClass(data.character_class);
+        setCharacterAge(data.character_age);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -42,7 +45,12 @@ export default function Account({ session }) {
       setLoading(false);
     }
   }
-  async function updateProfile({ username, character_class, avatar_url }) {
+  async function updateProfile({
+    username,
+    character_class,
+    character_age,
+    avatar_url,
+  }) {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
@@ -51,6 +59,7 @@ export default function Account({ session }) {
         id: session?.user.id,
         username,
         character_class,
+        character_age,
         avatar_url,
         updated_at: new Date(),
       };
@@ -88,12 +97,24 @@ export default function Account({ session }) {
           onChangeText={(text) => setCharacterClass(text)}
         />
       </View>
+      <View style={styles.verticallySpaced}>
+        <Input
+          label="Age"
+          value={character_age || ""}
+          onChangeText={(text) => setCharacterAge(text)}
+        />
+      </View>
 
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Button
           title={loading ? "Loading ..." : "Update"}
           onPress={() =>
-            updateProfile({ username, character_class, avatar_url: avatarUrl })
+            updateProfile({
+              username,
+              character_class,
+              character_age,
+              avatar_url: avatarUrl,
+            })
           }
           disabled={loading}
         />

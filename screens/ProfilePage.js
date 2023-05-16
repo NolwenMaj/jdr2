@@ -8,13 +8,23 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import BtnCapacities from "../components/BtnCapacities";
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 
 const Data = require("../datas.js");
 
-export default function ProfilePage({ session, navigation }) {
+export default function ProfilePage({
+  session,
+  navigation,
+  username,
+  character_age,
+  character_class,
+  character_force,
+  character_intelligence,
+  character_endurance,
+  character_charisme,
+  character_dexterite,
+}) {
   return (
     <>
       <ImageBackground
@@ -43,14 +53,41 @@ export default function ProfilePage({ session, navigation }) {
               <Text style={styles.align40}>{Data.profile.lifePoints}</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.name}>{Data.profile.name}</Text>
-          <Text style={styles.classe}>{Data.profile.classe}</Text>
-          <Text style={styles.age}>{Data.profile.age}</Text>
+          <Text style={styles.name}>{username}</Text>
+          <Text style={styles.classe}>{character_class}</Text>
+          <Text style={styles.age}>{character_age}</Text>
         </View>
         <View>
-          {Data.caracteristics.map((data) => {
-            return <BtnCapacities key={data.id} capacity={data} />;
-          })}
+          <View style={styles.divSkills}>
+            <TouchableOpacity style={styles.buttonSkills}>
+              <Text style={styles.align30}>{character_force}</Text>
+            </TouchableOpacity>
+            <Text style={styles.align30}>Force</Text>
+          </View>
+          <View style={styles.divSkills}>
+            <TouchableOpacity style={styles.buttonSkills}>
+              <Text style={styles.align30}>{character_dexterite}</Text>
+            </TouchableOpacity>
+            <Text style={styles.align30}>Dextérité</Text>
+          </View>
+          <View style={styles.divSkills}>
+            <TouchableOpacity style={styles.buttonSkills}>
+              <Text style={styles.align30}>{character_endurance}</Text>
+            </TouchableOpacity>
+            <Text style={styles.align30}>Endurance</Text>
+          </View>
+          <View style={styles.divSkills}>
+            <TouchableOpacity style={styles.buttonSkills}>
+              <Text style={styles.align30}>{character_intelligence}</Text>
+            </TouchableOpacity>
+            <Text style={styles.align30}>Intelligence</Text>
+          </View>
+          <View style={styles.divSkills}>
+            <TouchableOpacity style={styles.buttonSkills}>
+              <Text style={styles.align30}>{character_charisme}</Text>
+            </TouchableOpacity>
+            <Text style={styles.align30}>Charisme</Text>
+          </View>
         </View>
       </ImageBackground>
     </>
@@ -96,6 +133,20 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 1000,
     backgroundColor: "white",
+    justifyContent: "center",
+  },
+  align30: { fontSize: 30, textAlign: "center" },
+  divSkills: {
+    width: 250,
+    flex: 0.12,
+    flexDirection: "row",
+    gap: 20,
+  },
+  buttonSkills: {
+    width: 40,
+    height: 40,
+    borderRadius: 1000,
+    backgroundColor: "grey",
     justifyContent: "center",
   },
 });
