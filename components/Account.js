@@ -7,7 +7,7 @@ import { Session } from "@supabase/supabase-js";
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
-  const [website, setWebsite] = useState("");
+  const [character_class, setCharacterClass] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Account({ session }) {
 
       const { data, error, status } = await supabase
         .from("profiles")
-        .select(`username, website, avatar_url`)
+        .select(`username, character_class, avatar_url`)
         .eq("id", session?.user.id)
         .single();
 
@@ -31,7 +31,7 @@ export default function Account({ session }) {
 
       if (data) {
         setUsername(data.username);
-        setWebsite(data.website);
+        setCharacterClass(data.character_class);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -42,7 +42,7 @@ export default function Account({ session }) {
       setLoading(false);
     }
   }
-  async function updateProfile({ username, website, avatar_url }) {
+  async function updateProfile({ username, character_class, avatar_url }) {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
@@ -50,7 +50,7 @@ export default function Account({ session }) {
       const updates = {
         id: session?.user.id,
         username,
-        website,
+        character_class,
         avatar_url,
         updated_at: new Date(),
       };
@@ -83,9 +83,9 @@ export default function Account({ session }) {
       </View>
       <View style={styles.verticallySpaced}>
         <Input
-          label="Website"
-          value={website || ""}
-          onChangeText={(text) => setWebsite(text)}
+          label="Class"
+          value={character_class || ""}
+          onChangeText={(text) => setCharacterClass(text)}
         />
       </View>
 
@@ -93,7 +93,7 @@ export default function Account({ session }) {
         <Button
           title={loading ? "Loading ..." : "Update"}
           onPress={() =>
-            updateProfile({ username, website, avatar_url: avatarUrl })
+            updateProfile({ username, character_class, avatar_url: avatarUrl })
           }
           disabled={loading}
         />
