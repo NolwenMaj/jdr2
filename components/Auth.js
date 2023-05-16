@@ -3,7 +3,6 @@ import { Alert, StyleSheet, View } from "react-native";
 import { supabase } from "../lib/supabase";
 import { Button, Input } from "react-native-elements";
 
-
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -84,6 +83,7 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginTop: 40,
     padding: 12,
   },

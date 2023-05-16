@@ -26,7 +26,7 @@ export default function StatsPage() {
         }}
       >
         {Data.skills.map((data) => {
-          return <BtnSkills skill={data} />;
+          return <BtnSkills key={data.id} skill={data} />;
         })}
       </ImageBackground>
     </>

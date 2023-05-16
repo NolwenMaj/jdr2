@@ -1,37 +1,40 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import { View, StyleSheet } from "react-native";
-import { Session } from "@supabase/supabase-js";
 
-// import composants
+// Import components
 import Auth from "./components/Auth";
-import Account from "./components/Account";
 import Navigator from "./components/Navigator";
 
 export default function App() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+      }
+    );
+
+    supabase.auth.getSession().then(({ data: session }) => {
       setSession(session);
     });
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+    return () => {
+      listener.unsubscribe();
+    };
   }, []);
 
   return (
     <View style={styles.container}>
-      {session && session.user ? <Navigator /> : <Auth />}
+      {session && session.user ? <Navigator session={session} /> : <Auth />}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     justifyContent: "flex-end",
   },
 });

@@ -49,7 +49,7 @@ export default function ProfilePage({ session, navigation }) {
         </View>
         <View>
           {Data.caracteristics.map((data) => {
-            return <BtnCapacities capacity={data} />;
+            return <BtnCapacities key={data.id} capacity={data} />;
           })}
         </View>
       </ImageBackground>

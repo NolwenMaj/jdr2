@@ -36,44 +36,38 @@ const MyStack = ({ session }) => {
   );
 };
 
-const MyTabs = ({ session }) => {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerTintColor: "grey",
-      }}
-      initialRouteName="Dice"
-    >
-      <Tab.Screen
-        name="MyStack"
-        options={() => ({
-          title: "Profile",
-          headerShown: false,
-          session: session,
-        })}
-      >
-        {(props) => <MyStack {...props} session={session} />}
-      </Tab.Screen>
-      <Tab.Screen
-        name="Dice"
-        options={() => ({ title: "Dés", session: session })}
-      >
-        {(props) => <RollDicePage {...props} session={session} />}
-      </Tab.Screen>
-      <Tab.Screen
-        name="Stats"
-        options={() => ({ title: "Compétences", session: session })}
-      >
-        {(props) => <StatsPage {...props} session={session} />}
-      </Tab.Screen>
-    </Tab.Navigator>
-  );
-};
-
-export default function Navigator() {
+export default function Navigator({ session }) {
   return (
     <NavigationContainer>
-      <MyTabs />
+      <Tab.Navigator
+        screenOptions={{
+          headerTintColor: "grey",
+        }}
+        initialRouteName="Dice"
+      >
+        <Tab.Screen
+          name="MyStack"
+          options={() => ({
+            title: "Profile",
+            headerShown: false,
+            session: session,
+          })}
+        >
+          {(props) => <MyStack {...props} session={session} />}
+        </Tab.Screen>
+        <Tab.Screen
+          name="Dice"
+          options={() => ({ title: "Dés", session: session })}
+        >
+          {(props) => <RollDicePage {...props} session={session} />}
+        </Tab.Screen>
+        <Tab.Screen
+          name="Stats"
+          options={() => ({ title: "Compétences", session: session })}
+        >
+          {(props) => <StatsPage {...props} session={session} />}
+        </Tab.Screen>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
