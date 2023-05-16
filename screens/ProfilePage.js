@@ -14,7 +14,7 @@ import Tabatha from "../assets/Tabatha.jpg";
 
 const Data = require("../datas.js");
 
-export default function ProfilePage() {
+export default function ProfilePage({ session, navigation }) {
   return (
     <>
       <ImageBackground
@@ -27,6 +27,13 @@ export default function ProfilePage() {
         }}
       >
         <View style={styles.maindivs}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Account", { session: { session } });
+            }}
+          >
+            <Text>options</Text>
+          </TouchableOpacity>
           <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
           <View style={{ position: "absolute", top: 10, right: 6 }}>
             <TouchableOpacity style={styles.buttonLifePoints}>
@@ -82,14 +89,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-{
-  /* <View
-style={{
-  flex: 1,
-  flexDirection: "row",
-  columnGap: 20,
-  margin: 10,
-}}
-> */
-}

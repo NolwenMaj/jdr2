@@ -13,7 +13,7 @@ import React, { useState, useEffect } from "react";
 
 import mapBackground from "../assets/map.png";
 
-export default function RollDicePage({}) {
+export default function RollDicePage({session}) {
   const ButtonsDices = ({ maxDice }) => (
     <TouchableHighlight
       style={{

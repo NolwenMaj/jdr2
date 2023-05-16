@@ -1,3 +1,4 @@
+import * as React from "react";
 import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import { View, StyleSheet } from "react-native";
@@ -30,7 +31,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: "flex-end",
   },
 });
