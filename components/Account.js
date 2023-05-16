@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { StyleSheet, View, Alert } from "react-native";
+import { StyleSheet, View, Alert, ImageBackground } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
+
+import mapBackground from "../assets/map.png";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
@@ -79,51 +81,60 @@ export default function Account({ session }) {
   }
 
   return (
-    <View>
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Input label="Email" value={session?.user?.email} disabled />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input
-          label="Username"
-          value={username || ""}
-          onChangeText={(text) => setUsername(text)}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input
-          label="Class"
-          value={character_class || ""}
-          onChangeText={(text) => setCharacterClass(text)}
-        />
-      </View>
-      <View style={styles.verticallySpaced}>
-        <Input
-          label="Age"
-          value={character_age || ""}
-          onChangeText={(text) => setCharacterAge(text)}
-        />
-      </View>
+    <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        opacity: 0.5,
+      }}
+    >
+      <View>
+        <View style={[styles.verticallySpaced, styles.mt20]}>
+          <Input label="Email" value={session?.user?.email} disabled />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Input
+            label="Username"
+            value={username || ""}
+            onChangeText={(text) => setUsername(text)}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Input
+            label="Class"
+            value={character_class || ""}
+            onChangeText={(text) => setCharacterClass(text)}
+          />
+        </View>
+        <View style={styles.verticallySpaced}>
+          <Input
+            label="Age"
+            value={character_age || ""}
+            onChangeText={(text) => setCharacterAge(text)}
+          />
+        </View>
 
-      <View style={[styles.verticallySpaced, styles.mt20]}>
-        <Button
-          title={loading ? "Loading ..." : "Update"}
-          onPress={() =>
-            updateProfile({
-              username,
-              character_class,
-              character_age,
-              avatar_url: avatarUrl,
-            })
-          }
-          disabled={loading}
-        />
-      </View>
+        <View style={[styles.verticallySpaced, styles.mt20]}>
+          <Button
+            title={loading ? "Loading ..." : "Update"}
+            onPress={() =>
+              updateProfile({
+                username,
+                character_class,
+                character_age,
+                avatar_url: avatarUrl,
+              })
+            }
+            disabled={loading}
+          />
+        </View>
 
-      <View style={styles.verticallySpaced}>
-        <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+        <View style={styles.verticallySpaced}>
+          <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+        </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
 
