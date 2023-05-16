@@ -26,16 +26,19 @@ export default function ProfilePage({ session, navigation }) {
           alignItems: "center",
         }}
       >
-        <View style={styles.maindivs}>
+        <View style={{ position: "absolute", top: 20, right: 20 }}>
           <TouchableOpacity
+            style={styles.buttonOptions}
             onPress={() => {
               navigation.navigate("Account", { session: { session } });
             }}
           >
-            <Text>options</Text>
+            <Text style={{ fontSize: 15, textAlign: "center" }}>compte</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.maindivs}>
           <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
-          <View style={{ position: "absolute", top: 10, right: 6 }}>
+          <View style={{ position: "absolute", bottom: 110, right: 6 }}>
             <TouchableOpacity style={styles.buttonLifePoints}>
               <Text style={styles.align40}>{Data.profile.lifePoints}</Text>
             </TouchableOpacity>
@@ -86,6 +89,13 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 1000,
     backgroundColor: "black",
+    justifyContent: "center",
+  },
+  buttonOptions: {
+    width: 60,
+    height: 60,
+    borderRadius: 1000,
+    backgroundColor: "white",
     justifyContent: "center",
   },
 });

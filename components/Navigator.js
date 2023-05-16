@@ -15,11 +15,21 @@ import Account from "./Account";
 
 const MyStack = ({ session }) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: "grey",
+        headerTitleStyle: {
+          fontSize: 15,
+        },
+      }}
+    >
       <Stack.Screen name="Profile" options={() => ({ session: session })}>
         {(props) => <ProfilePage {...props} session={session} />}
       </Stack.Screen>
-      <Stack.Screen name="Account" options={() => ({ session: session })}>
+      <Stack.Screen
+        name="Account"
+        options={() => ({ title: "Compte", session: session })}
+      >
         {(props) => <Account {...props} session={session} />}
       </Stack.Screen>
     </Stack.Navigator>
@@ -28,21 +38,39 @@ const MyStack = ({ session }) => {
 
 const MyTabs = ({ session }) => {
   return (
-    <Tab.Navigator screenOptions={{}} initialRouteName="Dice">
-      <Tab.Screen name="MyStack" options={() => ({ session: session })}>
+    <Tab.Navigator
+      screenOptions={{
+        headerTintColor: "grey",
+      }}
+      initialRouteName="Dice"
+    >
+      <Tab.Screen
+        name="MyStack"
+        options={() => ({
+          title: "Profile",
+          headerShown: false,
+          session: session,
+        })}
+      >
         {(props) => <MyStack {...props} session={session} />}
       </Tab.Screen>
-      <Tab.Screen name="Dice" options={() => ({ session: session })}>
+      <Tab.Screen
+        name="Dice"
+        options={() => ({ title: "Dés", session: session })}
+      >
         {(props) => <RollDicePage {...props} session={session} />}
       </Tab.Screen>
-      <Tab.Screen name="Stats" options={() => ({ session: session })}>
+      <Tab.Screen
+        name="Stats"
+        options={() => ({ title: "Compétences", session: session })}
+      >
         {(props) => <StatsPage {...props} session={session} />}
       </Tab.Screen>
     </Tab.Navigator>
   );
 };
 
-export default function Navigator({ session }) {
+export default function Navigator() {
   return (
     <NavigationContainer>
       <MyTabs />
