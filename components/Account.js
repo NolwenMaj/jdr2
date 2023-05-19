@@ -111,7 +111,8 @@ export default function Account({ session }) {
           <Input
             label="Age"
             value={character_age || ""}
-            onChangeText={(text) => setCharacterAge(text)}
+            keyboardType="numeric"
+            onChangeText={(number) => setCharacterAge(number)}
           />
         </View>
 

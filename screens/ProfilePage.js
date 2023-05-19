@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
+
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 

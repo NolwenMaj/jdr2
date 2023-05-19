@@ -86,6 +86,7 @@ export default function Navigator({ session }) {
   const [character_endurance, setCharacterEndurance] = useState("");
   const [character_charisme, setCharacterCharisme] = useState("");
   const [character_dexterite, setCharacterDexterite] = useState("");
+  const [id, setId] = useState(0);
 
   useEffect(() => {
     if (session) getProfile();
@@ -99,7 +100,7 @@ export default function Navigator({ session }) {
       const { data, error, status } = await supabase
         .from("profiles")
         .select(
-          `username, character_class, character_age,character_force,character_intelligence ,character_endurance,character_charisme,character_dexterite, avatar_url`
+          `id, username, character_class, character_age,character_force,character_intelligence ,character_endurance,character_charisme,character_dexterite, avatar_url`
         )
         .eq("id", session?.user.id)
         .single();
@@ -118,6 +119,7 @@ export default function Navigator({ session }) {
         setCharacterEndurance(data.character_endurance);
         setCharacterCharisme(data.character_charisme);
         setCharacterDexterite(data.character_dexterite);
+        setId(data.id);
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -164,6 +166,7 @@ export default function Navigator({ session }) {
               character_force={character_force}
               character_intelligence={character_intelligence}
               character_endurance={character_endurance}
+              id={id}
             />
           )}
         </Tab.Screen>
@@ -175,9 +178,9 @@ export default function Navigator({ session }) {
         </Tab.Screen>
         <Tab.Screen
           name="Stats"
-          options={() => ({ title: "Compétences", session: session })}
+          options={() => ({ title: "Compétences", session: session, id: id })}
         >
-          {(props) => <StatsPage {...props} session={session} />}
+          {(props) => <StatsPage {...props} session={session} id={id} />}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
