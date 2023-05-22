@@ -12,12 +12,14 @@ import { supabase } from "../lib/supabase";
 
 import styles from "../styles";
 import SlidingBarLifePoints from "../components/SlidingBarLifePoints";
+import SlidingBarCharacteristics from "../components/SlidingBarCharacteristics";
+
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 
 export default function ProfilePage({ session, navigation }) {
   const [loading, setLoading] = useState(true);
-  const [character, setCharacter] = useState([]);
+  const [character, setCharacter] = useState(null);
 
   useEffect(() => {
     if (session) getProfile();
@@ -67,52 +69,68 @@ export default function ProfilePage({ session, navigation }) {
             }}
           />
         </View>
-        <View key={character.id}>
-          <View style={styles.px20}>
-            <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
-            <View style={{ position: "absolute", bottom: 110, right: 0 }}>
-              <SlidingBarLifePoints
-                session={session}
-                life_points={character.life_points}
+        {character && (
+          <View key={character.id}>
+            <View style={styles.px20}>
+              <Image
+                source={Tabatha}
+                resizeMode="cover"
+                style={styles.avatar}
               />
+              <View style={{ position: "absolute", bottom: 110, right: 0 }}>
+                <SlidingBarLifePoints
+                  session={session}
+                  life_points={character.life_points}
+                />
+              </View>
+              <Text style={styles.align40}>{character.name}</Text>
+              <Text style={styles.align30_italic}>{character.class}</Text>
+              <Text style={styles.align20}>{character.age}</Text>
             </View>
-            <Text style={styles.align40}>{character.name}</Text>
-            <Text style={styles.align30_italic}>{character.class}</Text>
-            <Text style={styles.align20}>{character.age}</Text>
+            <View>
+              <View style={styles.divSkills}>
+                <SlidingBarCharacteristics
+                  session={session}
+                  initialValue={character.strength}
+                  characteristic="strength"
+                />
+                <Text style={styles.align30}>Force</Text>
+              </View>
+              <View style={styles.divSkills}>
+                <SlidingBarCharacteristics
+                  session={session}
+                  initialValue={character.dexterity}
+                  characteristic="dexterity"
+                />
+                <Text style={styles.align30}>Dextérité</Text>
+              </View>
+              <View style={styles.divSkills}>
+                <SlidingBarCharacteristics
+                  session={session}
+                  initialValue={character.stamina}
+                  characteristic="stamina"
+                />
+                <Text style={styles.align30}>Endurance</Text>
+              </View>
+              <View style={styles.divSkills}>
+                <SlidingBarCharacteristics
+                  session={session}
+                  initialValue={character.intelligence}
+                  characteristic="intelligence"
+                />
+                <Text style={styles.align30}>Intelligence</Text>
+              </View>
+              <View style={styles.divSkills}>
+                <SlidingBarCharacteristics
+                  session={session}
+                  initialValue={character.charisma}
+                  characteristic="charisma"
+                />
+                <Text style={styles.align30}>Charisme</Text>
+              </View>
+            </View>
           </View>
-          <View>
-            <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.btns_sm_grey}>
-                <Text style={styles.align30}>{character.strength}</Text>
-              </TouchableOpacity>
-              <Text style={styles.align30}>Force</Text>
-            </View>
-            <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.btns_sm_grey}>
-                <Text style={styles.align30}>{character.dexterity}</Text>
-              </TouchableOpacity>
-              <Text style={styles.align30}>Dextérité</Text>
-            </View>
-            <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.btns_sm_grey}>
-                <Text style={styles.align30}>{character.stamina}</Text>
-              </TouchableOpacity>
-              <Text style={styles.align30}>Endurance</Text>
-            </View>
-            <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.btns_sm_grey}>
-                <Text style={styles.align30}>{character.intelligence}</Text>
-              </TouchableOpacity>
-              <Text style={styles.align30}>Intelligence</Text>
-            </View>
-            <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.btns_sm_grey}>
-                <Text style={styles.align30}>{character.charisma}</Text>
-              </TouchableOpacity>
-              <Text style={styles.align30}>Charisme</Text>
-            </View>
-          </View>
-        </View>
+        )}
       </ImageBackground>
     </>
   );
