@@ -84,30 +84,27 @@ export default function Account({ session }) {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={{
-        flex: 1,
-        opacity: 0.5,
-      }}
+      style={styles.map}
     >
       <View>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[styles.px4_stretch, styles.mt20]}>
           <Input label="Email" value={session?.user?.email} disabled />
         </View>
-        <View style={styles.verticallySpaced}>
+        <View style={styles.px4_stretch}>
           <Input
             label="Username"
             value={username || ""}
             onChangeText={(text) => setUsername(text)}
           />
         </View>
-        <View style={styles.verticallySpaced}>
+        <View style={styles.px4_stretch}>
           <Input
             label="Class"
             value={character_class || ""}
             onChangeText={(text) => setCharacterClass(text)}
           />
         </View>
-        <View style={styles.verticallySpaced}>
+        <View style={styles.px4_stretch}>
           <Input
             label="Age"
             value={character_age || ""}
@@ -116,7 +113,7 @@ export default function Account({ session }) {
           />
         </View>
 
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[styles.px4_stretch, styles.mt20]}>
           <Button
             title={loading ? "Loading ..." : "Update"}
             onPress={() =>
@@ -131,7 +128,7 @@ export default function Account({ session }) {
           />
         </View>
 
-        <View style={styles.verticallySpaced}>
+        <View style={styles.vpx4_stretch}>
           <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
         </View>
       </View>

@@ -38,10 +38,7 @@ export default function SkillsUpdate({ session, skills }) {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={{
-        flex: 1,
-        opacity: 0.5,
-      }}
+      style={styles.map_center}
     >
       <View style={styles.verticallySpaced}>
         <Input

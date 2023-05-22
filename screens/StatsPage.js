@@ -51,17 +51,16 @@ export default function StatsPage({ session, navigation }) {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={{
-          flex: 1,
-          opacity: 0.5,
-          alignItems: "center",
-        }}
+        style={styles.map_center}
       >
         <View style={{ position: "absolute", top: 20, right: 20 }}>
           <TouchableOpacity
             style={styles.buttonOptions}
             onPress={() => {
-              navigation.navigate("SkillsUpdate", { session: { session } ,skills:{skills }});
+              navigation.navigate("SkillsUpdate", {
+                session: { session },
+                skills: { skills },
+              });
             }}
           >
             <Text style={{ fontSize: 15, textAlign: "center" }}>Update</Text>

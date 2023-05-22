@@ -1,6 +1,35 @@
 import { StyleSheet } from "react-native";
+
 export default Styles = StyleSheet.create({
-  maindivs: {
+  divButtons: {
+    flexDirection: "row",
+    bottom: 20,
+    position: "absolute",
+    justifyContent: "space-evenly",
+  },
+  dice: {
+    width: 100,
+    height: 100,
+    borderRadius: 20,
+    margin: 20,
+    padding: 5,
+    backgroundColor: "black",
+    justifyContent: "center",
+    opacity: 10,
+  },
+  container: {
+    flex: 1,
+    marginTop: 40,
+    padding: 12,
+  },
+  px4_stretch: {
+    paddingVertical: 4,
+    alignSelf: "stretch",
+  },
+  mt20: {
+    marginTop: 20,
+  },
+  px20: {
     paddingVertical: 20,
   },
   avatar: {
@@ -8,40 +37,26 @@ export default Styles = StyleSheet.create({
     width: 250,
     borderRadius: 1000,
   },
-  age: { fontSize: 20, textAlign: "center" },
-  name: {
-    fontSize: 40,
-    textAlign: "center",
-  },
-  classe: {
-    fontSize: 30,
-    fontStyle: "italic",
-    textAlign: "center",
-  },
+  map_center: { flex: 1, opacity: 0.5, alignItems: "center" },
+  map: { flex: 1, opacity: 0.5 },
+  align30_italic: { fontSize: 30, fontStyle: "italic", textAlign: "center" },
   align20: { fontSize: 20, textAlign: "center" },
   align30: { fontSize: 30, textAlign: "center" },
-  align40: { fontSize: 40, textAlign: "center", color: "white" },
-  divSkills: {
-    flexDirection: "row",
-    alignContent: "center",
-    gap: 20,
-  },
-  buttonLifePoints: {
+  align40: { fontSize: 40, textAlign: "center" },
+  align40_white: { fontSize: 40, textAlign: "center", color: "white" },
+  btns: {
     width: 60,
     height: 60,
     borderRadius: 1000,
+    justifyContent: "center",
+  },
+  bg_black: {
     backgroundColor: "black",
-    justifyContent: "center",
   },
-  buttonOptions: {
-    width: 60,
-    height: 60,
-    borderRadius: 1000,
+  bg_white: {
     backgroundColor: "white",
-    justifyContent: "center",
   },
-
-  buttonSkills: {
+  btns_sm_grey: {
     width: 30,
     height: 30,
     borderRadius: 1000,
@@ -52,12 +67,12 @@ export default Styles = StyleSheet.create({
     marginTop: 40,
     padding: 12,
   },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
   mt20: {
     marginTop: 20,
+  },
+  divSkills: {
+    flexDirection: "row",
+    alignContent: "center",
+    gap: 20,
   },
 });

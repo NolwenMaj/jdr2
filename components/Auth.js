@@ -3,13 +3,14 @@ import { Alert, ImageBackground, StyleSheet, View } from "react-native";
 import { supabase } from "../lib/supabase";
 import { Button, Input } from "react-native-elements";
 
+import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   async function signInWithEmail() {
     setLoading(true);
     try {
@@ -46,13 +47,10 @@ export default function Auth() {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={{
-        flex: 1,
-        opacity: 0.5,
-      }}
+      style={styles.map}
     >
       <View style={styles.container}>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[styles.px4_stretch, styles.mt20]}>
           <Input
             label="Email"
             leftIcon={{ type: "font-awesome", name: "envelope" }}
@@ -62,7 +60,7 @@ export default function Auth() {
             autoCapitalize={"none"}
           />
         </View>
-        <View style={styles.verticallySpaced}>
+        <View style={styles.px4_stretch}>
           <Input
             label="Password"
             leftIcon={{ type: "font-awesome", name: "lock" }}
@@ -73,14 +71,14 @@ export default function Auth() {
             autoCapitalize={"none"}
           />
         </View>
-        <View style={[styles.verticallySpaced, styles.mt20]}>
+        <View style={[styles.px4_stretch, styles.mt20]}>
           <Button
             title="Sign in"
             disabled={loading}
             onPress={() => signInWithEmail()}
           />
         </View>
-        <View style={styles.verticallySpaced}>
+        <View style={styles.px4_stretch}>
           <Button
             title="Sign up"
             disabled={loading}
@@ -91,19 +89,3 @@ export default function Auth() {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 40,
-    padding: 12,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
-  mt20: {
-    marginTop: 20,
-  },
-});

@@ -1,19 +1,19 @@
-import { DeviceMotion } from "expo-sensors";
-import { supabase } from "../lib/supabase";
 import {
   View,
   Text,
-  StyleSheet,
   TouchableHighlight,
   Vibration,
   useWindowDimensions,
   ImageBackground,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { DeviceMotion } from "expo-sensors";
+import { supabase } from "../lib/supabase";
 
+import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
-export default function RollDicePage({session}) {
+export default function RollDicePage({ session }) {
   const ButtonsDices = ({ maxDice }) => (
     <TouchableHighlight
       style={{
@@ -88,11 +88,7 @@ export default function RollDicePage({session}) {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={{
-          flex: 1,
-          opacity: 0.5,
-          alignItems: "center",
-        }}
+        style={styles.map_center}
       >
         <View
           style={[
@@ -116,7 +112,7 @@ export default function RollDicePage({session}) {
           >
             {/*  <Text> x : {dicePosition.x} </Text>
             <Text> y : {dicePosition.y}</Text> */}
-            <Text style={styles.text}>{result}</Text>
+            <Text style={styles.align40_white}>{result}</Text>
           </View>
         </View>
       </ImageBackground>
@@ -131,27 +127,3 @@ export default function RollDicePage({session}) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  divButtons: {
-    flexDirection: "row",
-    bottom: 20,
-    position: "absolute",
-    justifyContent: "space-evenly",
-  },
-  dice: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
-    margin: 20,
-    padding: 5,
-    backgroundColor: "black",
-    justifyContent: "center",
-    opacity: 10,
-  },
-  text: {
-    fontSize: 40,
-    textAlign: "center",
-    color: "white",
-  },
-});

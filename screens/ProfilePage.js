@@ -54,61 +54,59 @@ export default function ProfilePage({ session, navigation }) {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={{
-          flex: 1,
-          opacity: 0.5,
-          alignItems: "center",
-        }}
+        style={styles.map_center}
       >
         <View style={{ position: "absolute", top: 20, right: 20 }}>
           <TouchableOpacity
-            style={styles.buttonOptions}
+            style={[styles.btns, styles.bg_white]}
             onPress={() => {
               navigation.navigate("Account", { session: { session } });
             }}
           >
-            <Text style={{ fontSize: 15, textAlign: "center" }}>compte</Text>
+            <Text style={styles.align20}>+</Text>
           </TouchableOpacity>
         </View>
         <View key={character.id}>
-          <View style={styles.maindivs}>
+          <View style={styles.px20}>
             <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
             <View style={{ position: "absolute", bottom: 110, right: 6 }}>
-              <TouchableOpacity style={styles.buttonLifePoints}>
-                <Text style={styles.align40}>{character.life_points}</Text>
+              <TouchableOpacity style={[styles.btns, styles.bg_black]}>
+                <Text style={styles.align40_white}>
+                  {character.life_points}
+                </Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.name}>{character.name}</Text>
-            <Text style={styles.classe}>{character.class}</Text>
-            <Text style={styles.age}>{character.age}</Text>
+            <Text style={styles.align40}>{character.name}</Text>
+            <Text style={styles.align30_italic}>{character.class}</Text>
+            <Text style={styles.align20}>{character.age}</Text>
           </View>
           <View>
             <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.buttonSkills}>
+              <TouchableOpacity style={styles.btns_sm_grey}>
                 <Text style={styles.align30}>{character.strength}</Text>
               </TouchableOpacity>
               <Text style={styles.align30}>Force</Text>
             </View>
             <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.buttonSkills}>
+              <TouchableOpacity style={styles.btns_sm_grey}>
                 <Text style={styles.align30}>{character.dexterity}</Text>
               </TouchableOpacity>
               <Text style={styles.align30}>Dextérité</Text>
             </View>
             <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.buttonSkills}>
+              <TouchableOpacity style={styles.btns_sm_grey}>
                 <Text style={styles.align30}>{character.stamina}</Text>
               </TouchableOpacity>
               <Text style={styles.align30}>Endurance</Text>
             </View>
             <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.buttonSkills}>
+              <TouchableOpacity style={styles.btns_sm_grey}>
                 <Text style={styles.align30}>{character.intelligence}</Text>
               </TouchableOpacity>
               <Text style={styles.align30}>Intelligence</Text>
             </View>
             <View style={styles.divSkills}>
-              <TouchableOpacity style={styles.buttonSkills}>
+              <TouchableOpacity style={styles.btns_sm_grey}>
                 <Text style={styles.align30}>{character.charisma}</Text>
               </TouchableOpacity>
               <Text style={styles.align30}>Charisme</Text>
