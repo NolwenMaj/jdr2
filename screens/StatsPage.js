@@ -1,4 +1,11 @@
-import { ImageBackground, Text, View, Alert } from "react-native";
+import {
+  ImageBackground,
+  Text,
+  View,
+  Alert,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
@@ -7,8 +14,6 @@ import mapBackground from "../assets/map.png";
 
 export default function StatsPage({ session }) {
   const [loading, setLoading] = useState(true);
-  const [skill_name, setSkillName] = useState([]);
-  const [skill_level, setSkillLevel] = useState([]);
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
@@ -22,7 +27,7 @@ export default function StatsPage({ session }) {
 
       const { data, error, status } = await supabase
         .from("skills")
-        .select("skill_name, skill_level")
+        .select("*")
         .eq("user_id", session?.user.id);
 
       if (error && status !== 406) {
@@ -31,8 +36,6 @@ export default function StatsPage({ session }) {
 
       if (data) {
         setSkills(data);
-        setSkillName(data.map((item) => item.skill_name));
-        setSkillLevel(data.map((item) => item.skill_level));
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -54,9 +57,19 @@ export default function StatsPage({ session }) {
           alignItems: "center",
         }}
       >
+        <View style={{ position: "absolute", top: 20, right: 20 }}>
+          <TouchableOpacity
+            style={styles.buttonOptions}
+            onPress={() => {
+              navigation.navigate("SkillsUpdate", { session: { session } });
+            }}
+          >
+            <Text style={{ fontSize: 15, textAlign: "center" }}>Update</Text>
+          </TouchableOpacity>
+        </View>
         <View>
           {skills.map((item) => (
-            <Text>
+            <Text key={item.id}>
               {item.skill_level} {item.skill_name}
             </Text>
           ))}
@@ -65,3 +78,13 @@ export default function StatsPage({ session }) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  buttonOptions: {
+    width: 60,
+    height: 60,
+    borderRadius: 1000,
+    backgroundColor: "white",
+    justifyContent: "center",
+  },
+});
