@@ -1,5 +1,5 @@
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
-
+import { Text, TouchableOpacity} from "react-native";
+import styles from "../styles";
 export default BtnValidationForm = () => {
   return (
     <TouchableOpacity style={styles.buttonSkills}>
@@ -7,14 +7,3 @@ export default BtnValidationForm = () => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  align20: { fontSize: 20, textAlign: "center" },
-  buttonSkills: {
-    width: 40,
-    height: 40,
-    borderRadius: 1000,
-    backgroundColor: "grey",
-    justifyContent: "center",
-  },
-});

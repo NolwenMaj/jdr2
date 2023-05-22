@@ -10,7 +10,7 @@ import { supabase } from "../lib/supabase";
 
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
-// import BtnSkills from "../components/BtnSkills";
+import BtnSkills from "../components/BtnSkills";
 
 export default function StatsPage({ session, navigation }) {
   const [loading, setLoading] = useState(true);
@@ -61,7 +61,7 @@ export default function StatsPage({ session, navigation }) {
           <TouchableOpacity
             style={styles.buttonOptions}
             onPress={() => {
-              navigation.navigate("SkillsUpdate", { session: { session } });
+              navigation.navigate("SkillsUpdate", { session: { session } ,skills:{skills }});
             }}
           >
             <Text style={{ fontSize: 15, textAlign: "center" }}>Update</Text>
@@ -69,9 +69,11 @@ export default function StatsPage({ session, navigation }) {
         </View>
         <View>
           {skills.map((item) => (
-            <Text key={item.id}>
-              {item.skill_level} {item.skill_name}
-            </Text>
+            <BtnSkills
+              key={item.id}
+              skillLevel={item.skill_level}
+              skillName={item.skill_name}
+            />
           ))}
         </View>
       </ImageBackground>

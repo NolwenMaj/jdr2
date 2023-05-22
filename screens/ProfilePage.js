@@ -78,7 +78,7 @@ export default function ProfilePage({ session, navigation }) {
                 <Text style={styles.align40}>{character.life_points}</Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.name}>{character.username}</Text>
+            <Text style={styles.name}>{character.name}</Text>
             <Text style={styles.classe}>{character.class}</Text>
             <Text style={styles.age}>{character.age}</Text>
           </View>

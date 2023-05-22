@@ -13,7 +13,6 @@ export default function Account({ session }) {
   const [character_class, setCharacterClass] = useState("");
   const [character_age, setCharacterAge] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
-  /* const [capacities,setCapacities]=useState ("") */
 
   useEffect(() => {
     if (session) getProfile();

@@ -18,10 +18,10 @@ export default Styles = StyleSheet.create({
     fontStyle: "italic",
     textAlign: "center",
   },
+  align20: { fontSize: 20, textAlign: "center" },
+  align30: { fontSize: 30, textAlign: "center" },
   align40: { fontSize: 40, textAlign: "center", color: "white" },
   divSkills: {
-    width: 250,
-    flex: 0.12,
     flexDirection: "row",
     alignContent: "center",
     gap: 20,
@@ -40,16 +40,10 @@ export default Styles = StyleSheet.create({
     backgroundColor: "white",
     justifyContent: "center",
   },
-  align30: { fontSize: 30, textAlign: "center" },
-  divSkills: {
-    width: 250,
-    flex: 0.12,
-    flexDirection: "row",
-    gap: 20,
-  },
+
   buttonSkills: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: 1000,
     backgroundColor: "grey",
     justifyContent: "center",

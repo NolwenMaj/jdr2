@@ -9,10 +9,7 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [character_class, setCharacterClass] = useState("");
-  const [character_age, setCharacterAge] = useState("");
-
+  
   async function signInWithEmail() {
     setLoading(true);
     try {
@@ -35,13 +32,6 @@ export default function Auth() {
       const { error } = await supabase.auth.signUp({
         email: email,
         password: password,
-        option: {
-          data: {
-            username: username,
-            character_age: character_age,
-            character_class: character_class,
-          },
-        },
       });
 
       if (error) Alert.alert(error.message);

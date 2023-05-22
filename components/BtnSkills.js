@@ -1,34 +1,13 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import styles from "../styles";
 
-export default BtnSkills = ({ skill }) => {
+export default BtnSkills = ({ skillName, skillLevel }) => {
   return (
-    <View style={styles.divSkills} key={skill.id}>
+    <View style={styles.divSkills}>
       <TouchableOpacity style={styles.buttonSkills}>
-        <Text style={styles.align30} key={skill.id}>
-          {skill.level}
-        </Text>
+        <Text style={styles.align20}>{skillLevel}</Text>
       </TouchableOpacity>
-      <Text style={styles.align30} key={skill.id}>
-        {skill.name}
-      </Text>
+      <Text style={styles.align20}>{skillName}</Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  align30: { fontSize: 30, textAlign: "center" },
-  divSkills: {
-    width: 250,
-    flex: 0.12,
-    flexDirection: "row",
-    alignContent: "center",
-    gap: 20,
-  },
-  buttonSkills: {
-    width: 40,
-    height: 40,
-    borderRadius: 1000,
-    backgroundColor: "grey",
-    justifyContent: "center",
-  },
-});
