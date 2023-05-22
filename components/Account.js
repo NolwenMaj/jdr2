@@ -4,6 +4,7 @@ import { StyleSheet, View, Alert, ImageBackground } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 
+import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
 export default function Account({ session }) {
@@ -138,18 +139,3 @@ export default function Account({ session }) {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: 12,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: "stretch",
-  },
-  mt20: {
-    marginTop: 20,
-  },
-});

@@ -7,7 +7,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-// import screens
 import RollDicePage from "../screens/RollDicePage";
 import StatsPage from "../screens/StatsPage";
 import ProfilePage from "../screens/ProfilePage";

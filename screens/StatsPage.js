@@ -4,15 +4,15 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  StyleSheet,
 } from "react-native";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
+import styles from "../styles";
 import mapBackground from "../assets/map.png";
 // import BtnSkills from "../components/BtnSkills";
 
-export default function StatsPage({ session , navigation}) {
+export default function StatsPage({ session, navigation }) {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
 
@@ -78,13 +78,3 @@ export default function StatsPage({ session , navigation}) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  buttonOptions: {
-    width: 60,
-    height: 60,
-    borderRadius: 1000,
-    backgroundColor: "white",
-    justifyContent: "center",
-  },
-});
