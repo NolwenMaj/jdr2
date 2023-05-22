@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +12,7 @@ import RollDicePage from "../screens/RollDicePage";
 import StatsPage from "../screens/StatsPage";
 import ProfilePage from "../screens/ProfilePage";
 import Account from "./Account";
-import SkillsUpdatePage from "./SkillsUpdatePage";
+import SkillsUpdatePage from "../screens/SkillsUpdatePage";
 
 const StackProfile = ({ session }) => {
   return (
@@ -108,5 +109,3 @@ export default function Navigator({ session }) {
     </NavigationContainer>
   );
 }
-
-

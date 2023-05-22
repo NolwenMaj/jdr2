@@ -97,7 +97,7 @@ export default function Account({ session }) {
             onChangeText={(text) => setUsername(text)}
           />
         </View>
-        <View style={styles.px4_stretch}>
+{/*         <View style={styles.px4_stretch}>
           <Input
             label="Class"
             value={character_class || ""}
@@ -111,7 +111,7 @@ export default function Account({ session }) {
             keyboardType="numeric"
             onChangeText={(number) => setCharacterAge(number)}
           />
-        </View>
+        </View> */}
 
         <View style={[styles.px4_stretch, styles.mt20]}>
           <Button

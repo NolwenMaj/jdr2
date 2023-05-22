@@ -6,11 +6,12 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 import styles from "../styles";
-
+import SlidingBarLifePoints from "../components/SlidingBarLifePoints";
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 
@@ -57,24 +58,23 @@ export default function ProfilePage({ session, navigation }) {
         style={styles.map_center}
       >
         <View style={{ position: "absolute", top: 20, right: 20 }}>
-          <TouchableOpacity
-            style={[styles.btns, styles.bg_white]}
+          <AntDesign
+            name="setting"
+            size={60}
+            color="white"
             onPress={() => {
               navigation.navigate("Account", { session: { session } });
             }}
-          >
-            <Text style={styles.align20}>+</Text>
-          </TouchableOpacity>
+          />
         </View>
         <View key={character.id}>
           <View style={styles.px20}>
             <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
-            <View style={{ position: "absolute", bottom: 110, right: 6 }}>
-              <TouchableOpacity style={[styles.btns, styles.bg_black]}>
-                <Text style={styles.align40_white}>
-                  {character.life_points}
-                </Text>
-              </TouchableOpacity>
+            <View style={{ position: "absolute", bottom: 110, right: 0 }}>
+              <SlidingBarLifePoints
+                session={session}
+                life_points={character.life_points}
+              />
             </View>
             <Text style={styles.align40}>{character.name}</Text>
             <Text style={styles.align30_italic}>{character.class}</Text>
