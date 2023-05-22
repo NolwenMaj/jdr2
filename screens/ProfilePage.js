@@ -4,28 +4,51 @@ import {
   Text,
   View,
   StyleSheet,
-  useWindowDimensions,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-
+import { useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 
-const Data = require("../datas.js");
+export default function ProfilePage({ session, navigation }) {
+  const [loading, setLoading] = useState(true);
+  const [character, setCharacter] = useState([]);
 
-export default function ProfilePage({
-  session,
-  navigation,
-  username,
-  character_age,
-  character_class,
-  character_force,
-  character_intelligence,
-  character_endurance,
-  character_charisme,
-  character_dexterite,
-}) {
+  useEffect(() => {
+    if (session) getProfile();
+  }, [session]);
+
+  async function getProfile() {
+    try {
+      setLoading(true);
+      if (!session?.user) throw new Error("No user on the session!");
+
+      const { data, error, status } = await supabase
+        .from("characters")
+        .select("*")
+        .eq("user_id", session?.user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        console.log(character);
+        setCharacter(data);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <>
       <ImageBackground
@@ -47,47 +70,49 @@ export default function ProfilePage({
             <Text style={{ fontSize: 15, textAlign: "center" }}>compte</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.maindivs}>
-          <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
-          <View style={{ position: "absolute", bottom: 110, right: 6 }}>
-            <TouchableOpacity style={styles.buttonLifePoints}>
-              <Text style={styles.align40}>{Data.profile.lifePoints}</Text>
-            </TouchableOpacity>
+        <View key={character.id}>
+          <View style={styles.maindivs}>
+            <Image source={Tabatha} resizeMode="cover" style={styles.avatar} />
+            <View style={{ position: "absolute", bottom: 110, right: 6 }}>
+              <TouchableOpacity style={styles.buttonLifePoints}>
+                <Text style={styles.align40}>{character.life_points}</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.name}>{character.username}</Text>
+            <Text style={styles.classe}>{character.class}</Text>
+            <Text style={styles.age}>{character.age}</Text>
           </View>
-          <Text style={styles.name}>{username}</Text>
-          <Text style={styles.classe}>{character_class}</Text>
-          <Text style={styles.age}>{character_age}</Text>
-        </View>
-        <View>
-          <View style={styles.divSkills}>
-            <TouchableOpacity style={styles.buttonSkills}>
-              <Text style={styles.align30}>{character_force}</Text>
-            </TouchableOpacity>
-            <Text style={styles.align30}>Force</Text>
-          </View>
-          <View style={styles.divSkills}>
-            <TouchableOpacity style={styles.buttonSkills}>
-              <Text style={styles.align30}>{character_dexterite}</Text>
-            </TouchableOpacity>
-            <Text style={styles.align30}>Dextérité</Text>
-          </View>
-          <View style={styles.divSkills}>
-            <TouchableOpacity style={styles.buttonSkills}>
-              <Text style={styles.align30}>{character_endurance}</Text>
-            </TouchableOpacity>
-            <Text style={styles.align30}>Endurance</Text>
-          </View>
-          <View style={styles.divSkills}>
-            <TouchableOpacity style={styles.buttonSkills}>
-              <Text style={styles.align30}>{character_intelligence}</Text>
-            </TouchableOpacity>
-            <Text style={styles.align30}>Intelligence</Text>
-          </View>
-          <View style={styles.divSkills}>
-            <TouchableOpacity style={styles.buttonSkills}>
-              <Text style={styles.align30}>{character_charisme}</Text>
-            </TouchableOpacity>
-            <Text style={styles.align30}>Charisme</Text>
+          <View>
+            <View style={styles.divSkills}>
+              <TouchableOpacity style={styles.buttonSkills}>
+                <Text style={styles.align30}>{character.strength}</Text>
+              </TouchableOpacity>
+              <Text style={styles.align30}>Force</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <TouchableOpacity style={styles.buttonSkills}>
+                <Text style={styles.align30}>{character.dexterity}</Text>
+              </TouchableOpacity>
+              <Text style={styles.align30}>Dextérité</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <TouchableOpacity style={styles.buttonSkills}>
+                <Text style={styles.align30}>{character.stamina}</Text>
+              </TouchableOpacity>
+              <Text style={styles.align30}>Endurance</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <TouchableOpacity style={styles.buttonSkills}>
+                <Text style={styles.align30}>{character.intelligence}</Text>
+              </TouchableOpacity>
+              <Text style={styles.align30}>Intelligence</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <TouchableOpacity style={styles.buttonSkills}>
+                <Text style={styles.align30}>{character.charisma}</Text>
+              </TouchableOpacity>
+              <Text style={styles.align30}>Charisme</Text>
+            </View>
           </View>
         </View>
       </ImageBackground>

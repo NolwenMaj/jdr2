@@ -12,7 +12,7 @@ import { supabase } from "../lib/supabase";
 import mapBackground from "../assets/map.png";
 // import BtnSkills from "../components/BtnSkills";
 
-export default function StatsPage({ session }) {
+export default function StatsPage({ session , navigation}) {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
 
