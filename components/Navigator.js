@@ -15,8 +15,9 @@ import RollDicePage from "../screens/RollDicePage";
 import StatsPage from "../screens/StatsPage";
 import ProfilePage from "../screens/ProfilePage";
 import Account from "./Account";
+import SkillsUpdatePage from "./SkillsUpdatePage";
 
-const MyStack = ({
+const StackProfile = ({
   session,
   username,
   character_age,
@@ -70,6 +71,34 @@ const MyStack = ({
         options={() => ({ title: "Compte", session: session })}
       >
         {(props) => <Account {...props} session={session} />}
+      </Stack.Screen>
+    </Stack.Navigator>
+  );
+};
+
+const StackSkills = ({ session }) => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: "grey",
+        headerTitleStyle: {
+          fontSize: 15,
+        },
+      }}
+    >
+      <Stack.Screen
+        name="Skills"
+        options={() => ({
+          session: session,
+        })}
+      >
+        {(props) => <StatsPage {...props} session={session} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="SkillsUpdate"
+        options={() => ({ title: "SkillsUpdate", session: session })}
+      >
+        {(props) => <SkillsUpdatePage {...props} session={session} />}
       </Stack.Screen>
     </Stack.Navigator>
   );
@@ -139,7 +168,7 @@ export default function Navigator({ session }) {
         initialRouteName="Dice"
       >
         <Tab.Screen
-          name="MyStack"
+          name="StackProfile"
           options={() => ({
             title: "Profile",
             headerShown: false,
@@ -155,7 +184,7 @@ export default function Navigator({ session }) {
           })}
         >
           {(props) => (
-            <MyStack
+            <StackProfile
               {...props}
               session={session}
               username={username}
@@ -177,10 +206,15 @@ export default function Navigator({ session }) {
           {(props) => <RollDicePage {...props} session={session} />}
         </Tab.Screen>
         <Tab.Screen
-          name="Stats"
-          options={() => ({ title: "Compétences", session: session, id: id })}
+          name="Compétences"
+          options={() => ({
+            title: "Compétences",
+            headerShown: false,
+
+            session: session,
+          })}
         >
-          {(props) => <StatsPage {...props} session={session} id={id} />}
+          {(props) => <StackSkills {...props} session={session} />}
         </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
