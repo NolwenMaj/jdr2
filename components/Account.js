@@ -7,6 +7,7 @@ import {
   Text,
   PanResponder,
   Animated,
+  TouchableOpacity,
 } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
@@ -149,22 +150,51 @@ export default function Account({ session }) {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={styles.map}
+        style={[styles.map, styles.center_p30]}
       >
         <View>
-          <View style={[styles.px4_stretch, styles.mt20]}>
-            <Input label="Email" value={session?.user?.email} disabled />
-          </View>
-          <Text>Personnage :</Text>
           <View style={styles.px4_stretch}>
-            <Input
-              label="Nom"
-              value={character_name || ""}
-              onChangeText={(text) => setCharacterName(text)}
-            />
+            <Text>Email</Text>
+            <Input value={session?.user?.email} disabled />
           </View>
+          <View style={[styles.px4_stretch]}>
+            <View style={styles.px4_stretch}>
+              <Text>Nom</Text>
+              <Input
+                value={character_name || ""}
+                onChangeText={(text) => setCharacterName(text)}
+              />
+            </View>
+            <View style={styles.px4_stretch}>
+              <Text>Age</Text>
+              <View style={styles.row_alignCenter_gap20}>
+                <View
+                  style={{
+                    height: 60,
+                    width: 60,
+                    backgroundColor: "lightgray",
+                    margin: 10,
+                    borderRadius: 1000,
+                  }}
+                  {...panResponder.panHandlers}
+                >
+                  <Animated.View
+                    style={[
+                      styles.roundBtns,
+                      {
+                        transform: [{ translateX }],
+                      },
+                    ]}
+                  >
+                    <Text style={styles.align30}>{character_age}</Text>
+                  </Animated.View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <Text>Classe</Text>
           <DropDownPicker
-            label="Class"
+            style={styles.test}
             open={open}
             value={character_class}
             items={objClasses}
@@ -172,31 +202,10 @@ export default function Account({ session }) {
             setValue={setCharacterClass}
             setItems={setObjClasses}
           />
-          <View style={styles.row_alignCenter_gap20}>
-            <View
-              style={{
-                height: 60,
-                backgroundColor: "lightgray",
-                margin: 10,
-                borderRadius: 1000,
-              }}
-              {...panResponder.panHandlers}
-            >
-              <Animated.View
-                style={[
-                  styles.btns,
-                  {
-                    transform: [{ translateX }],
-                  },
-                ]}
-              >
-                <Text style={styles.align30}>{character_age}</Text>
-              </Animated.View>
-            </View>
-          </View>
-          <View style={[styles.px4_stretch, styles.mt20]}>
-            <Button
-              title={loading ? "Loading ..." : "Update"}
+
+          <View style={[styles.px4_stretch]}>
+            <TouchableOpacity
+              style={styles.btnForms}
               onPress={() =>
                 updateCharacter({
                   character_name,
@@ -205,11 +214,21 @@ export default function Account({ session }) {
                 })
               }
               disabled={loading}
-            />
+            >
+              <Text style={[styles.align20, styles.bold]}>
+                {loading ? "Chargement ..." : "Valider"}
+              </Text>
+            </TouchableOpacity>
           </View>
-
-          <View style={styles.px4_stretch}>
-            <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
+          <View style={[styles.px4_stretch, styles.mt40]}>
+            <TouchableOpacity
+              style={[styles.btnForms, styles.bg_black]}
+              onPress={() => supabase.auth.signOut()}
+            >
+              <Text style={[styles.align20_white, styles.bold]}>
+                Déconnexion
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>

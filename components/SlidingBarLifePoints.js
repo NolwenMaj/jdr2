@@ -69,7 +69,7 @@ export default SlidingBarLifePoints = ({ session, life_points }) => {
       >
         <Animated.View
           style={[
-            styles.btns,
+            styles.roundBtns,
             {
               transform: [{ translateX }],
             },

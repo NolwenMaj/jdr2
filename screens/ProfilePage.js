@@ -3,7 +3,6 @@ import {
   ImageBackground,
   Text,
   View,
-  TouchableOpacity,
   Alert,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";

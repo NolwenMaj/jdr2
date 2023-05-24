@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { Alert, ImageBackground, StyleSheet, View } from "react-native";
+import {
+  Alert,
+  ImageBackground,
+  View,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { supabase } from "../lib/supabase";
-import { Button, Input } from "react-native-elements";
+import { Input } from "react-native-elements";
 
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
@@ -47,44 +53,49 @@ export default function Auth() {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={styles.map}
+      style={[styles.map, styles.p30]}
     >
-      <View style={styles.mt40_p12}>
-        <View style={[styles.px4_stretch, styles.mt20]}>
-          <Input
-            label="Email"
-            leftIcon={{ type: "font-awesome", name: "envelope" }}
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            placeholder="email@address.com"
-            autoCapitalize={"none"}
-          />
-        </View>
-        <View style={styles.px4_stretch}>
-          <Input
-            label="Password"
-            leftIcon={{ type: "font-awesome", name: "lock" }}
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            secureTextEntry={true}
-            placeholder="Password"
-            autoCapitalize={"none"}
-          />
-        </View>
-        <View style={[styles.px4_stretch, styles.mt20]}>
-          <Button
-            title="Sign in"
-            disabled={loading}
-            onPress={() => signInWithEmail()}
-          />
-        </View>
-        <View style={styles.px4_stretch}>
-          <Button
-            title="Sign up"
-            disabled={loading}
-            onPress={() => signUpWithEmail()}
-          />
-        </View>
+      <View style={[styles.px4_stretch, styles.mt20]}>
+        <Input
+          label={<Text style={styles.align20}>Email</Text>}
+          leftIcon={{ type: "font-awesome", name: "envelope" }}
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          placeholder="email@address.com"
+          autoCapitalize={"none"}
+          labelStyle=""
+        />
+      </View>
+      <View style={styles.px4_stretch}>
+        <Input
+          label={<Text style={styles.align20}>Mot de passe</Text>}
+          leftIcon={{ type: "font-awesome", name: "lock" }}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          secureTextEntry={true}
+          placeholder="Password"
+          autoCapitalize={"none"}
+        />
+      </View>
+      <View style={styles.px4_stretch}>
+        <TouchableOpacity
+          title="Sign in"
+          style={styles.btnForms}
+          disabled={loading}
+          onPress={() => signInWithEmail()}
+        >
+          <Text style={[styles.align20, styles.bold]}>Connexion</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.px4_stretch}>
+        <TouchableOpacity
+          title="Sign up"
+          style={styles.btnForms}
+          disabled={loading}
+          onPress={() => signUpWithEmail()}
+        >
+          <Text style={[styles.align20, styles.bold]}>Inscription</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
