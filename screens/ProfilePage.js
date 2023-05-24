@@ -22,10 +22,10 @@ export default function ProfilePage({ session, navigation }) {
   const [character, setCharacter] = useState(null);
 
   useEffect(() => {
-    if (session) getProfile();
+    if (session) getCharacter();
   }, [session]);
 
-  async function getProfile() {
+  async function getCharacter() {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
@@ -85,10 +85,10 @@ export default function ProfilePage({ session, navigation }) {
               </View>
               <Text style={styles.align40}>{character.name}</Text>
               <Text style={styles.align30_italic}>{character.class}</Text>
-              <Text style={styles.align20}>{character.age}</Text>
+              <Text style={styles.align20}>{character.age} ans</Text>
             </View>
             <View>
-              <View style={styles.divSkills}>
+              <View style={styles. row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.strength}
@@ -96,7 +96,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Force</Text>
               </View>
-              <View style={styles.divSkills}>
+              <View style={styles. row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.dexterity}
@@ -104,7 +104,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Dextérité</Text>
               </View>
-              <View style={styles.divSkills}>
+              <View style={styles. row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.stamina}
@@ -112,7 +112,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Endurance</Text>
               </View>
-              <View style={styles.divSkills}>
+              <View style={styles. row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.intelligence}
@@ -120,7 +120,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Intelligence</Text>
               </View>
-              <View style={styles.divSkills}>
+              <View style={styles. row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.charisma}

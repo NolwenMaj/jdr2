@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { StyleSheet, View, Alert, ImageBackground } from "react-native";
+import { View, Alert, ImageBackground, Text } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState("");
-  const [character_class, setCharacterClass] = useState("");
-  const [character_age, setCharacterAge] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [character_name, setCharacterName] = useState();
+  const [character_class, setCharacterClass] = useState();
+  const [character_age, setCharacterAge] = useState();
+  // const [avatarUrl, setAvatarUrl] = useState("");
 
   useEffect(() => {
-    if (session) getProfile();
+    if (session) getCharacter();
   }, [session]);
 
-  async function getProfile() {
+  async function getCharacter() {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
 
       const { data, error, status } = await supabase
-        .from("profiles")
-        .select(`username, character_class, character_age, avatar_url`)
-        .eq("id", session?.user.id)
+        .from("characters")
+        .select("*")
+        .eq("user_id", session?.user.id)
         .single();
 
       if (error && status !== 406) {
@@ -34,10 +35,10 @@ export default function Account({ session }) {
       }
 
       if (data) {
-        setUsername(data.username);
-        setCharacterClass(data.character_class);
-        setCharacterAge(data.character_age);
-        setAvatarUrl(data.avatar_url);
+        setCharacterName(data.name);
+        setCharacterClass(data.class);
+        setCharacterAge(data.age);
+        /*  setAvatarUrl(data.avatar_url); */
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -47,26 +48,27 @@ export default function Account({ session }) {
       setLoading(false);
     }
   }
-  async function updateProfile({
-    username,
+  async function updateCharacter({
+    character_name,
     character_class,
     character_age,
-    avatar_url,
+    // avatar_url,
   }) {
     try {
       setLoading(true);
       if (!session?.user) throw new Error("No user on the session!");
 
       const updates = {
-        id: session?.user.id,
-        username,
-        character_class,
-        character_age,
-        avatar_url,
-        updated_at: new Date(),
+        name: character_name,
+        class: character_class,
+        age: character_age,
+        // avatar_url,
       };
 
-      const { error } = await supabase.from("profiles").upsert(updates);
+      const { error } = await supabase
+        .from("characters")
+        .update(updates)
+        .eq("user_id", session?.user.id);
 
       if (error) {
         throw error;
@@ -81,57 +83,65 @@ export default function Account({ session }) {
   }
 
   return (
-    <ImageBackground
-      source={mapBackground}
-      resizeMode="cover"
-      style={styles.map}
-    >
-      <View>
-        <View style={[styles.px4_stretch, styles.mt20]}>
-          <Input label="Email" value={session?.user?.email} disabled />
-        </View>
-        <View style={styles.px4_stretch}>
-          <Input
-            label="Username"
-            value={username || ""}
-            onChangeText={(text) => setUsername(text)}
-          />
-        </View>
-{/*         <View style={styles.px4_stretch}>
-          <Input
-            label="Class"
-            value={character_class || ""}
-            onChangeText={(text) => setCharacterClass(text)}
-          />
-        </View>
-        <View style={styles.px4_stretch}>
-          <Input
-            label="Age"
-            value={character_age || ""}
-            keyboardType="numeric"
-            onChangeText={(number) => setCharacterAge(number)}
-          />
-        </View> */}
+    <>
+      <ImageBackground
+        source={mapBackground}
+        resizeMode="cover"
+        style={styles.map}
+      >
+        <KeyboardAwareScrollView>
+          <View>
+            <View style={[styles.px4_stretch, styles.mt20]}>
+              <Input label="Email" value={session?.user?.email} disabled />
+            </View>
+            <Text>Personnage :</Text>
+            <View style={styles.px4_stretch}>
+              <Input
+                label="Nom"
+                value={character_name || ""}
+                onChangeText={(text) => setCharacterName(text)}
+              />
+            </View>
+            <View style={styles.px4_stretch}>
+              <Input
+                label="Class"
+                value={character_class || ""}
+                onChangeText={(text) => setCharacterClass(text)}
+              />
+            </View>
+            <View style={styles.px4_stretch}>
+              <Input
+                label="Age"
+                value={character_age}
+                keyboardType="numeric"
+                onChangeText={(number) => setCharacterAge(number)}
+              />
+            </View>
 
-        <View style={[styles.px4_stretch, styles.mt20]}>
-          <Button
-            title={loading ? "Loading ..." : "Update"}
-            onPress={() =>
-              updateProfile({
-                username,
-                character_class,
-                character_age,
-                avatar_url: avatarUrl,
-              })
-            }
-            disabled={loading}
-          />
-        </View>
+            <View style={[styles.px4_stretch, styles.mt20]}>
+              <Button
+                title={loading ? "Loading ..." : "Update"}
+                onPress={() =>
+                  updateCharacter({
+                    character_name,
+                    character_class,
+                    character_age,
+                    // avatar_url: avatarUrl,
+                  })
+                }
+                disabled={loading}
+              />
+            </View>
 
-        <View style={styles.vpx4_stretch}>
-          <Button title="Sign Out" onPress={() => supabase.auth.signOut()} />
-        </View>
-      </View>
-    </ImageBackground>
+            <View style={styles.px4_stretch}>
+              <Button
+                title="Sign Out"
+                onPress={() => supabase.auth.signOut()}
+              />
+            </View>
+          </View>
+        </KeyboardAwareScrollView>
+      </ImageBackground>
+    </>
   );
 }
