@@ -1,19 +1,13 @@
-import {
-  ImageBackground,
-  Text,
-  View,
-  Alert,
-  TouchableOpacity,
-} from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { ImageBackground, Text, View, Alert } from "react-native";
+
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
+import SlidingBarSkills from "../components/SlidingBarSkills";
 
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
-import BtnSkills from "../components/BtnSkills";
 
-export default function StatsPage({ session, navigation }) {
+export default function StatsPage({ session }) {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState([]);
 
@@ -47,31 +41,6 @@ export default function StatsPage({ session, navigation }) {
     }
   }
 
-  async function updateSkills({ skills }) {
-    try {
-      setLoading(true);
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const updates = {
-        user_id: session?.user.id,
-        updated_at: new Date(),
-        skills,
-      };
-
-      const { error } = await supabase.from("skills").upsert(updates);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  }
-
   return (
     <>
       <ImageBackground
@@ -79,81 +48,146 @@ export default function StatsPage({ session, navigation }) {
         resizeMode="cover"
         style={styles.map_center}
       >
-        <View style={{ position: "absolute", top: 20, right: 20 }}>
-          <AntDesign
-            name="setting"
-            size={60}
-            color="white"
-            onPress={() => {
-              navigation.navigate("SkillsUpdate", {
-                session: { session },
-                skills: { skills },
-              });
-            }}
-          />
-        </View>
-        <View >
-          {skills.map((skill) => (
-            <View>
-              <BtnSkills
-                skillLevel={skill.arts_and_crafts}
-                skillName="Artisanat/Construction"
+        {skills && (
+          <View key={skills.id}>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.arts_and_crafts}
+                skill="arts_and_crafts"
               />
-              <BtnSkills
-                skillLevel={skill.ranged_combat}
-                skillName="Combat à distance"
-              />
-              <BtnSkills
-                skillLevel={skill.close_combat}
-                skillName="Combat rapproché"
-              />
-              <BtnSkills
-                skillLevel={skill.nature_knowledge}
-                skillName="Connaissance de la nature"
-              />
-              <BtnSkills
-                skillLevel={skill.secrets_knowledge}
-                skillName="Connaissance des secrets"
-              />
-              <BtnSkills
-                skillLevel={skill.running_jumping}
-                skillName="Courir/Sauter"
-              />
-              <BtnSkills skillLevel={skill.discretion} skillName="Discrétion" />
-              <BtnSkills skillLevel={skill.dodging} skillName="Esquiver" />
-              <BtnSkills
-                skillLevel={skill.intimidating}
-                skillName="Intimider"
-              />
-              <BtnSkills
-                skillLevel={skill.reading_writing}
-                skillName="Lire/Ecrire"
-              />
-              <BtnSkills
-                skillLevel={skill.lying_convincing}
-                skillName="Mentir/Convaincre"
-              />
-              <BtnSkills skillLevel={skill.perception} skillName="Perception" />
-              <BtnSkills
-                skillLevel={skill.psychology}
-                skillName="Psychologie"
-              />
-              <BtnSkills skillLevel={skill.reflexes} skillName="Réflexes" />
-              <BtnSkills
-                skillLevel={skill.locks_and_traps}
-                skillName="Serrures et pièges"
-              />
-              <BtnSkills skillLevel={skill.treating} skillName="Soigner" />
-              <BtnSkills skillLevel={skill.stealing} skillName="Voler" />
+              <Text style={styles.align20}>Artisanat/Construction</Text>
             </View>
-          ))}
-        </View>
-        {/* {skills.map((item) => (
-            <BtnSkills
-              key={item.id}
-              skillLevel={item.skill_level}
-              skillName={item.skill_name}
-          />*/}
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.ranged_combat}
+                skill="ranged_combat"
+              />
+              <Text style={styles.align20}>Combat à distance</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.close_combat}
+                skill="close_combat"
+              />
+              <Text style={styles.align20}>Combat rapproché</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.nature_knowledge}
+                skill="nature_knowledge"
+              />
+              <Text style={styles.align20}>Connaissance de la nature</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.secrets_knowledge}
+                skill="secrets_knowledge"
+              />
+              <Text style={styles.align20}>Connaissance des secrets</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.running_jumping}
+                skill="running_jumping"
+              />
+              <Text style={styles.align20}>Courir/Sauter</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.discretion}
+                skill="discretion"
+              />
+              <Text style={styles.align20}>Discrétion</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.dodging}
+                skill="dodgingr"
+              />
+              <Text style={styles.align20}>Esquiver</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.intimidating}
+                skill="intimidating"
+              />
+              <Text style={styles.align20}>Intimider</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.reading_writing}
+                skill="reading_writing"
+              />
+              <Text style={styles.align20}>Lire/Ecrire</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.lying_convincing}
+                skill="lying_convincing"
+              />
+              <Text style={styles.align20}>Mentir/Convaincre</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.perception}
+                skill="perception"
+              />
+              <Text style={styles.align20}>Perception</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.psychology}
+                skill="psychology"
+              />
+              <Text style={styles.align20}>Psychologie</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.reflexes}
+                skill="reflexes"
+              />
+              <Text style={styles.align20}>Réflexes</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.locks_and_traps}
+                skill="locks_and_traps"
+              />
+              <Text style={styles.align20}>Serrures et pièges</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.treating}
+                skill="treating"
+              />
+              <Text style={styles.align20}>Soigner</Text>
+            </View>
+            <View style={styles.divSkills}>
+              <SlidingBarSkills
+                session={session}
+                initialValue={skills.stealing}
+                skill="stealing"
+              />
+              <Text style={styles.align20}>Voler</Text>
+            </View>
+          </View>
+        )}
       </ImageBackground>
     </>
   );
