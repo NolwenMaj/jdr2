@@ -57,27 +57,25 @@ export default SlidingBarSkills = ({ session, initialValue, skill }) => {
   };
 
   return (
-  
-      <View
-        style={{
-          height: 30,
-          backgroundColor: "lightgray",
-          margin: 4,
-          borderRadius: 1000,
-        }}
-        {...panResponder.panHandlers}
+    <View
+      style={{
+        height: 30,
+        backgroundColor: "lightgray",
+        margin: 4,
+        borderRadius: 1000,
+      }}
+      {...panResponder.panHandlers}
+    >
+      <Animated.View
+        style={[
+          styles.btns_sm_grey,
+          {
+            transform: [{ translateX }],
+          },
+        ]}
       >
-        <Animated.View
-          style={[
-            styles.btns_sm_grey,
-            {
-              transform: [{ translateX }],
-            },
-          ]}
-        >
-          <Text style={styles.align20}>{value}</Text>
-        </Animated.View>
-      </View>
-
+        <Text style={styles.align20}>{value}</Text>
+      </Animated.View>
+    </View>
   );
 };

@@ -69,7 +69,7 @@ export default function ProfilePage({ session, navigation }) {
             }}
           />
         </View>
-        {character && (
+        {character ? (
           <View key={character.id}>
             <View style={styles.px20}>
               <Image
@@ -88,7 +88,7 @@ export default function ProfilePage({ session, navigation }) {
               <Text style={styles.align20}>{character.age} ans</Text>
             </View>
             <View>
-              <View style={styles. row_alignCenter_gap20}>
+              <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.strength}
@@ -96,7 +96,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Force</Text>
               </View>
-              <View style={styles. row_alignCenter_gap20}>
+              <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.dexterity}
@@ -104,7 +104,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Dextérité</Text>
               </View>
-              <View style={styles. row_alignCenter_gap20}>
+              <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.stamina}
@@ -112,7 +112,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Endurance</Text>
               </View>
-              <View style={styles. row_alignCenter_gap20}>
+              <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.intelligence}
@@ -120,7 +120,7 @@ export default function ProfilePage({ session, navigation }) {
                 />
                 <Text style={styles.align30}>Intelligence</Text>
               </View>
-              <View style={styles. row_alignCenter_gap20}>
+              <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
                   initialValue={character.charisma}
@@ -130,6 +130,8 @@ export default function ProfilePage({ session, navigation }) {
               </View>
             </View>
           </View>
+        ) : (
+          <Text>Loading character...</Text>
         )}
       </ImageBackground>
     </>

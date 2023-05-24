@@ -1,9 +1,7 @@
 import { ImageBackground, Text, View, Alert } from "react-native";
-
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import SlidingBarSkills from "../components/SlidingBarSkills";
-
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
@@ -30,7 +28,7 @@ export default function StatsPage({ session }) {
       }
 
       if (data) {
-        setSkills(data);
+        setSkills(data[0]); // Assuming you only want to retrieve one row of skills for the current user
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -48,7 +46,7 @@ export default function StatsPage({ session }) {
         resizeMode="cover"
         style={styles.map_center}
       >
-        {skills && (
+        {skills ? (
           <View key={skills.id}>
             <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
@@ -110,7 +108,7 @@ export default function StatsPage({ session }) {
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.dodging}
-                skill="dodgingr"
+                skill="dodging"
               />
               <Text style={styles.align20}>Esquiver</Text>
             </View>
@@ -187,6 +185,8 @@ export default function StatsPage({ session }) {
               <Text style={styles.align20}>Voler</Text>
             </View>
           </View>
+        ) : (
+          <Text>Loading skills...</Text>
         )}
       </ImageBackground>
     </>
