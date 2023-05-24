@@ -9,7 +9,7 @@ import mapBackground from "../assets/map.png";
 
 export default function StatsPage({ session }) {
   const [loading, setLoading] = useState(true);
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState(null);
 
   useEffect(() => {
     if (session) getSkills();
@@ -50,7 +50,7 @@ export default function StatsPage({ session }) {
       >
         {skills && (
           <View key={skills.id}>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.arts_and_crafts}
@@ -58,7 +58,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Artisanat/Construction</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.ranged_combat}
@@ -66,7 +66,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Combat à distance</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.close_combat}
@@ -74,7 +74,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Combat rapproché</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.nature_knowledge}
@@ -82,7 +82,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Connaissance de la nature</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.secrets_knowledge}
@@ -90,7 +90,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Connaissance des secrets</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.running_jumping}
@@ -98,7 +98,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Courir/Sauter</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.discretion}
@@ -106,7 +106,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Discrétion</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.dodging}
@@ -114,7 +114,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Esquiver</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.intimidating}
@@ -122,7 +122,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Intimider</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.reading_writing}
@@ -130,7 +130,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Lire/Ecrire</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.lying_convincing}
@@ -138,7 +138,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Mentir/Convaincre</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.perception}
@@ -146,7 +146,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Perception</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.psychology}
@@ -154,7 +154,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Psychologie</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.reflexes}
@@ -162,7 +162,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Réflexes</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.locks_and_traps}
@@ -170,7 +170,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Serrures et pièges</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.treating}
@@ -178,7 +178,7 @@ export default function StatsPage({ session }) {
               />
               <Text style={styles.align20}>Soigner</Text>
             </View>
-            <View style={styles.divSkills}>
+            <View style={styles.row_alignCenter_gap10}>
               <SlidingBarSkills
                 session={session}
                 initialValue={skills.stealing}

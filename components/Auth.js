@@ -49,7 +49,7 @@ export default function Auth() {
       resizeMode="cover"
       style={styles.map}
     >
-      <View style={styles.container}>
+      <View style={styles.mt40_p12}>
         <View style={[styles.px4_stretch, styles.mt20]}>
           <Input
             label="Email"

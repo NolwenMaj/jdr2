@@ -17,11 +17,6 @@ export default Styles = StyleSheet.create({
     justifyContent: "center",
     opacity: 10,
   },
-  container: {
-    flex: 1,
-    marginTop: 40,
-    padding: 12,
-  },
   px4_stretch: {
     paddingVertical: 4,
     alignSelf: "stretch",
@@ -63,16 +58,23 @@ export default Styles = StyleSheet.create({
     backgroundColor: "grey",
     justifyContent: "center",
   },
-  container: {
+  mt40_p12: {
     marginTop: 40,
     padding: 12,
   },
   mt20: {
     marginTop: 20,
   },
-  divSkills: {
+  row_alignCenter_gap20: {
     flexDirection: "row",
     alignContent: "center",
+    alignItems: "center",
     gap: 20,
+  },
+  row_alignCenter_gap10: {
+    flexDirection: "row",
+    alignContent: "center",
+    alignItems: "center",
+    gap: 10,
   },
 });
