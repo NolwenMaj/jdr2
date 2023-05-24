@@ -57,41 +57,48 @@ export default Styles = StyleSheet.create({
   test: {
     borderWidth: 0,
   },
-  row: {},
+
   p30: {
     padding: 30,
     paddingTop: 120,
   },
-  btnForms: {
-    padding: 12,
-    borderRadius: 12,
-    backgroundColor: "grey",
-  },
+
   bold: {
     fontWeight: "600",
   },
 
   // VALIDEES
+
+  //bg
   map_center: { flex: 1, opacity: 0.5, alignItems: "center" },
   map: { flex: 1, opacity: 0.5 },
+  bg_black: {
+    backgroundColor: "black",
+  },
+  bg_white: {
+    backgroundColor: "white",
+  },
+
+  //text
   align30_italic: { fontSize: 30, fontStyle: "italic", textAlign: "center" },
   align20_white: { fontSize: 20, textAlign: "center", color: "white" },
   align20: { fontSize: 20, textAlign: "center" },
   align30: { fontSize: 30, textAlign: "center" },
   align40: { fontSize: 40, textAlign: "center" },
   align40_white: { fontSize: 40, textAlign: "center", color: "white" },
+
+  //btns
+  btnForms: {
+    padding: 12,
+    borderRadius: 12,
+    backgroundColor: "grey",
+  },
   roundBtns: {
     width: 60,
     height: 60,
     borderRadius: 1000,
     justifyContent: "center",
     backgroundColor: "grey",
-  },
-  bg_black: {
-    backgroundColor: "black",
-  },
-  bg_white: {
-    backgroundColor: "white",
   },
   btns_sm_grey: {
     width: 30,
@@ -100,10 +107,25 @@ export default Styles = StyleSheet.create({
     backgroundColor: "grey",
     justifyContent: "center",
   },
+
+  //margin /padding
   mt10: {
     marginTop: 10,
   },
   mt40: {
     marginTop: 40,
+  },
+
+  // specific
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  input: {
+    flexBasis: "auto",
+    minWidth: 200,
+  },
+  flexBasis: {
+    flexBasis: 80,
   },
 });

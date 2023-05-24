@@ -8,6 +8,7 @@ import {
   PanResponder,
   Animated,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
@@ -154,19 +155,22 @@ export default function Account({ session }) {
       >
         <View>
           <View style={styles.px4_stretch}>
-            <Text>Email</Text>
-            <Input value={session?.user?.email} disabled />
+            <Input
+              label={<Text style={styles.align20}>Email</Text>}
+              value={session?.user?.email}
+              disabled
+            />
           </View>
-          <View style={[styles.px4_stretch]}>
-            <View style={styles.px4_stretch}>
-              <Text>Nom</Text>
+          <View style={[styles.row]}>
+            <View style={styles.input}>
+              <Text style={styles.align20}>Nom</Text>
               <Input
                 value={character_name || ""}
                 onChangeText={(text) => setCharacterName(text)}
               />
             </View>
-            <View style={styles.px4_stretch}>
-              <Text>Age</Text>
+            <View style={styles.flexBasis}>
+              <Text style={styles.align20}>Age</Text>
               <View style={styles.row_alignCenter_gap20}>
                 <View
                   style={{
@@ -192,15 +196,21 @@ export default function Account({ session }) {
               </View>
             </View>
           </View>
-          <Text>Classe</Text>
+          <Text style={styles.align20}>Classe</Text>
           <DropDownPicker
-            style={styles.test}
+            style={{ backgroundColor: "lightgray", borderWidth : 0}}
             open={open}
             value={character_class}
             items={objClasses}
             setOpen={setOpen}
             setValue={setCharacterClass}
             setItems={setObjClasses}
+            dropDownContainerStyle={{
+              backgroundColor: "lightgray",
+              borderWidth : 0,
+              margin :10
+             
+            }}
           />
 
           <View style={[styles.px4_stretch]}>
