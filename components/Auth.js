@@ -90,11 +90,16 @@ export default function Auth() {
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign up"
-          style={styles.btnForms}
+          style={{
+            padding: 12,
+            borderRadius: 12,
+            borderWidth: 1,
+            borderColor: "gray",
+          }}
           disabled={loading}
           onPress={() => signUpWithEmail()}
         >
-          <Text style={[styles.align20, styles.bold]}>Inscription</Text>
+          <Text style={[styles.align20]}>Inscription</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
