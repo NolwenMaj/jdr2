@@ -14,13 +14,15 @@ import { Button, Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import DropDownPicker from "react-native-dropdown-picker";
+import read from "../crud/read";
+import update from "../crud/update";
 
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true);
-  const [character_name, setCharacterName] = useState("");
+  const [character_name, setCharacterName] = useState("oui");
   const [character_class, setCharacterClass] = useState("");
   const [character_age, setCharacterAge] = useState();
   const [open, setOpen] = useState(false);
@@ -54,69 +56,27 @@ export default function Account({ session }) {
   const pan = useState(new Animated.Value(0))[0];
 
   useEffect(() => {
-    if (session) getCharacter();
-  }, [session]);
-
-  async function getCharacter() {
-    try {
-      setLoading(true);
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const { data, error, status } = await supabase
-        .from("characters")
-        .select("*")
-        .eq("user_id", session?.user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setCharacterName(data.name);
-        setCharacterClass(data.class);
-        setCharacterAge(data.age);
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateCharacter({
-    character_name,
-    character_class,
-    character_age,
-  }) {
-    try {
-      setLoading(true);
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const updates = {
-        name: character_name,
-        class: character_class,
-        age: character_age,
+    if (session) {
+      const readCharacter = async () => {
+        let character = await read("characters", "*", { session });
+        setCharacterName(character.name);
+        setCharacterClass(character.class);
+        setCharacterAge(character.age);
+        setLoading(false);
       };
 
-      const { error } = await supabase
-        .from("characters")
-        .update(updates)
-        .eq("user_id", session?.user.id);
-
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      }
-    } finally {
-      setLoading(false);
+      readCharacter();
     }
-  }
+  }, [session]);
+
+  const updateCharacter = async () => {
+    const updates = {
+      name: character_name,
+      class: character_class,
+      age: character_age,
+    };
+    await update("characters", updates, { session });
+  };
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -198,7 +158,7 @@ export default function Account({ session }) {
           </View>
           <Text style={styles.align20}>Classe</Text>
           <DropDownPicker
-            style={{ backgroundColor: "lightgray", borderWidth : 0}}
+            style={{ backgroundColor: "lightgray", borderWidth: 0 }}
             open={open}
             value={character_class}
             items={objClasses}
@@ -207,9 +167,8 @@ export default function Account({ session }) {
             setItems={setObjClasses}
             dropDownContainerStyle={{
               backgroundColor: "lightgray",
-              borderWidth : 0,
-              margin :10
-             
+              borderWidth: 0,
+              margin: 10,
             }}
           />
 
