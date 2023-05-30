@@ -1,10 +1,4 @@
-import {
-  Image,
-  ImageBackground,
-  Text,
-  View,
-  Alert,
-} from "react-native";
+import { Image, ImageBackground, Text, View, Alert } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
@@ -77,9 +71,10 @@ export default function ProfilePage({ session, navigation }) {
                 style={styles.avatar}
               />
               <View style={{ position: "absolute", bottom: 110, right: 0 }}>
-                <SlidingBarLifePoints
+                <SlidingBarCharacteristics
                   session={session}
-                  life_points={character.life_points}
+                  value={character.life_points}
+                  characteristic="life_points"
                 />
               </View>
               <Text style={styles.align40}>{character.name}</Text>
@@ -90,7 +85,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
-                  initialValue={character.strength}
+                  value={character.strength}
                   characteristic="strength"
                 />
                 <Text style={styles.align30}>Force</Text>
@@ -98,7 +93,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
-                  initialValue={character.dexterity}
+                  value={character.dexterity}
                   characteristic="dexterity"
                 />
                 <Text style={styles.align30}>Dextérité</Text>
@@ -106,7 +101,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
-                  initialValue={character.stamina}
+                  value={character.stamina}
                   characteristic="stamina"
                 />
                 <Text style={styles.align30}>Endurance</Text>
@@ -114,7 +109,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
-                  initialValue={character.intelligence}
+                  value={character.intelligence}
                   characteristic="intelligence"
                 />
                 <Text style={styles.align30}>Intelligence</Text>
@@ -122,7 +117,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarCharacteristics
                   session={session}
-                  initialValue={character.charisma}
+                  value={character.charisma}
                   characteristic="charisma"
                 />
                 <Text style={styles.align30}>Charisme</Text>
