@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 import styles from "../styles";
-import SlidingBarLifePoints from "../components/SlidingBarLifePoints";
-import SlidingBarCharacteristics from "../components/SlidingBarCharacteristics";
+import SlidingBarController from "../components/SlidingBarController";
 
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
@@ -71,10 +70,11 @@ export default function ProfilePage({ session, navigation }) {
                 style={styles.avatar}
               />
               <View style={{ position: "absolute", bottom: 110, right: 0 }}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.life_points}
                   characteristic="life_points"
+                  table="characters"
                 />
               </View>
               <Text style={styles.align40}>{character.name}</Text>
@@ -83,42 +83,47 @@ export default function ProfilePage({ session, navigation }) {
             </View>
             <View>
               <View style={styles.row_alignCenter_gap20}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.strength}
                   characteristic="strength"
+                  table="characters"
                 />
                 <Text style={styles.align30}>Force</Text>
               </View>
               <View style={styles.row_alignCenter_gap20}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.dexterity}
                   characteristic="dexterity"
+                  table="characters"
                 />
                 <Text style={styles.align30}>Dextérité</Text>
               </View>
               <View style={styles.row_alignCenter_gap20}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.stamina}
                   characteristic="stamina"
+                  table="characters"
                 />
                 <Text style={styles.align30}>Endurance</Text>
               </View>
               <View style={styles.row_alignCenter_gap20}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.intelligence}
                   characteristic="intelligence"
+                  table="characters"
                 />
                 <Text style={styles.align30}>Intelligence</Text>
               </View>
               <View style={styles.row_alignCenter_gap20}>
-                <SlidingBarCharacteristics
+                <SlidingBarController
                   session={session}
                   value={character.charisma}
                   characteristic="charisma"
+                  table="characters"
                 />
                 <Text style={styles.align30}>Charisme</Text>
               </View>

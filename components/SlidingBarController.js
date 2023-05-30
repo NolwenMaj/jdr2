@@ -2,16 +2,17 @@ import React from "react";
 import SlidingBarView from "./SlidingBarView";
 import update from "../crud/update";
 
-export default SlidingBarCharacteristics = ({
+export default SlidingBarController = ({
   session,
   value,
   characteristic,
+  table
 }) => {
   const updateCharacteristic = async (newValue) => {
     const updates = {
       [characteristic]: newValue,
     };
-    await update("characters", updates, { session });
+    await update(table, updates, { session });
   };
 
   const handleUpdateCharacteristic = (newValue) => {
