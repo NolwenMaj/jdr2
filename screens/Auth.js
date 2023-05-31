@@ -1,53 +1,16 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  ImageBackground,
-  View,
-  TouchableOpacity,
-  Text,
-} from "react-native";
-import { supabase } from "../lib/supabase";
+import { ImageBackground, View, TouchableOpacity, Text } from "react-native";
 import { Input } from "react-native-elements";
-
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
+
+import signUpWithEmail from "../components/signUp";
+import signInWithEmail from "../components/SignIn";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  async function signInWithEmail() {
-    setLoading(true);
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      });
-
-      if (error) Alert.alert(error.message);
-    } catch (error) {
-      console.error(error);
-      Alert.alert("An error occurred while signing in.");
-    }
-    setLoading(false);
-  }
-
-  async function signUpWithEmail() {
-    setLoading(true);
-    try {
-      const { error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-      });
-
-      if (error) Alert.alert(error.message);
-    } catch (error) {
-      console.error(error);
-      Alert.alert("An error occurred while signing up.");
-    }
-    setLoading(false);
-  }
 
   return (
     <ImageBackground
@@ -77,16 +40,27 @@ export default function Auth() {
           autoCapitalize={"none"}
         />
       </View>
+
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign in"
           style={styles.btnForms}
           disabled={loading}
-          onPress={() => signInWithEmail()}
+          onPress={() => {
+            setLoading(true);
+            signInWithEmail(password, email)
+              .then(() => {
+                setLoading(false);
+              })
+              .catch(() => {
+                setLoading(false);
+              });
+          }}
         >
           <Text style={[styles.align20, styles.bold]}>Connexion</Text>
         </TouchableOpacity>
       </View>
+
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign up"
@@ -97,7 +71,16 @@ export default function Auth() {
             borderColor: "gray",
           }}
           disabled={loading}
-          onPress={() => signUpWithEmail()}
+          onPress={() => {
+            setLoading(true);
+            signUpWithEmail(password, email)
+              .then(() => {
+                setLoading(false);
+              })
+              .catch(() => {
+                setLoading(false);
+              });
+          }}
         >
           <Text style={[styles.align20]}>Inscription</Text>
         </TouchableOpacity>

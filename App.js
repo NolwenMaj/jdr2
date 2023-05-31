@@ -3,7 +3,7 @@ import { supabase } from "./lib/supabase";
 import { View, StyleSheet } from "react-native";
 
 // Import components
-import Auth from "./components/Auth";
+import Auth from "./screens/Auth";
 import Navigator from "./components/Navigator";
 
 export default function App() {
