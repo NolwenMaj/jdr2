@@ -2,7 +2,7 @@ import React from "react";
 import SlidingBarView from "./SlidingBarView";
 import update from "../crud/update";
 
-const SlidingBarController = ({
+export default SlidingBarController = ({
   session,
   initialValue,
   characteristic,
@@ -23,4 +23,4 @@ const SlidingBarController = ({
   );
 };
 
-export default SlidingBarController;
+

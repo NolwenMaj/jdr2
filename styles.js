@@ -101,6 +101,13 @@ export default Styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "grey",
   },
+
+  bgRoundBtns: {
+    height: 60,
+    backgroundColor: "lightgray",
+    margin: 5,
+    borderRadius: 1000,
+  },
   btns_sm_grey: {
     width: 30,
     height: 30,

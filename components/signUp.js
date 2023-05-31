@@ -1,7 +1,7 @@
 import { supabase } from "../lib/supabase";
 import { Alert } from "react-native";
 
-export default function signInWithEmail(password, email) {
+export default function signUpWithEmail(password, email) {
   return new Promise(async (resolve, reject) => {
     try {
       const { error } = await supabase.auth.signUp({

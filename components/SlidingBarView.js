@@ -39,12 +39,7 @@ export default SlidingBarView = ({ initialValue, onUpdate }) => {
   return (
     <View>
       <View
-        style={{
-          height: 60,
-          backgroundColor: "lightgray",
-          margin: 10,
-          borderRadius: 1000,
-        }}
+        style={styles.bgRoundBtns}
         {...panResponder.panHandlers}
       >
         <Animated.View
