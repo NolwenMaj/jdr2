@@ -4,7 +4,7 @@ import { Input } from "react-native-elements";
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
 
-import signUpWithEmail from "../components/signUp";
+import signUpWithEmail from "../components/SignUp";
 import signInWithEmail from "../components/SignIn";
 
 export default function Auth() {

@@ -140,4 +140,12 @@ export default Styles = StyleSheet.create({
     backgroundColor: "lightgray",
     borderWidth: 0,
   },
+  diceBoard: {
+    marginTop: 50,
+    backgroundColor: "white",
+    borderRadius: 10,
+    borderWidth: 10,
+    borderColor: "white",
+    opacity: 0.5,
+  },
 });
