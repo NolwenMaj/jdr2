@@ -1,43 +1,29 @@
-import { ImageBackground, Text, View, Alert } from "react-native";
+import { ImageBackground, Text, View } from "react-native";
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
-import SlidingBarSkills from "../components/SlidingBarSkills";
+import SlidingBarController from "../components/SlidingBarController";
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
+import read from "../crud/read";
 
 export default function StatsPage({ session }) {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState(null);
 
   useEffect(() => {
-    if (session) getSkills();
-  }, [session]);
+    if (session) {
+      const readSkills = async () => {
+        try {
+          let skillsFromBDD = await read("skills", "*", { session });
+          setSkills(skillsFromBDD);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error reading skills:", error);
+        }
+      };
 
-  async function getSkills() {
-    try {
-      setLoading(true);
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const { data, error, status } = await supabase
-        .from("skills")
-        .select("*")
-        .eq("user_id", session?.user.id);
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setSkills(data[0]); // Assuming you only want to retrieve one row of skills for the current user
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      }
-    } finally {
-      setLoading(false);
+      readSkills();
     }
-  }
+  }, [session]);
 
   return (
     <>
@@ -49,138 +35,155 @@ export default function StatsPage({ session }) {
         {skills ? (
           <View key={skills.id}>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.arts_and_crafts}
-                skill="arts_and_crafts"
+                characteristic="arts_and_crafts"
               />
               <Text style={styles.align20}>Artisanat/Construction</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.ranged_combat}
-                skill="ranged_combat"
+                characteristic="ranged_combat"
               />
               <Text style={styles.align20}>Combat à distance</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.close_combat}
-                skill="close_combat"
+                characteristic="close_combat"
               />
               <Text style={styles.align20}>Combat rapproché</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.nature_knowledge}
-                skill="nature_knowledge"
+                characteristic="nature_knowledge"
               />
               <Text style={styles.align20}>Connaissance de la nature</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.secrets_knowledge}
-                skill="secrets_knowledge"
+                characteristic="secrets_knowledge"
               />
               <Text style={styles.align20}>Connaissance des secrets</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.running_jumping}
-                skill="running_jumping"
+                characteristic="running_jumping"
               />
               <Text style={styles.align20}>Courir/Sauter</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.discretion}
-                skill="discretion"
+                characteristic="discretion"
               />
               <Text style={styles.align20}>Discrétion</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.dodging}
-                skill="dodging"
+                characteristic="dodging"
               />
               <Text style={styles.align20}>Esquiver</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.intimidating}
-                skill="intimidating"
+                characteristic="intimidating"
               />
               <Text style={styles.align20}>Intimider</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.reading_writing}
-                skill="reading_writing"
+                characteristic="reading_writing"
               />
               <Text style={styles.align20}>Lire/Ecrire</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.lying_convincing}
-                skill="lying_convincing"
+                characteristic="lying_convincing"
               />
               <Text style={styles.align20}>Mentir/Convaincre</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.perception}
-                skill="perception"
+                characteristic="perception"
               />
               <Text style={styles.align20}>Perception</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.psychology}
-                skill="psychology"
+                characteristic="psychology"
               />
               <Text style={styles.align20}>Psychologie</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.reflexes}
-                skill="reflexes"
+                characteristic="reflexes"
               />
               <Text style={styles.align20}>Réflexes</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.locks_and_traps}
-                skill="locks_and_traps"
+                characteristic="locks_and_traps"
               />
               <Text style={styles.align20}>Serrures et pièges</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.treating}
-                skill="treating"
+                characteristic="treating"
               />
               <Text style={styles.align20}>Soigner</Text>
             </View>
             <View style={styles.row_alignCenter_gap10}>
-              <SlidingBarSkills
+              <SlidingBarController
                 session={session}
+                table="skills"
                 initialValue={skills.stealing}
-                skill="stealing"
+                characteristic="stealing"
               />
               <Text style={styles.align20}>Voler</Text>
             </View>

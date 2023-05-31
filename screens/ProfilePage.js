@@ -2,10 +2,9 @@ import { Image, ImageBackground, Text, View, Alert } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-
+import read from "../crud/read";
 import styles from "../styles";
 import SlidingBarController from "../components/SlidingBarController";
-
 import mapBackground from "../assets/map.png";
 import Tabatha from "../assets/Tabatha.jpg";
 
@@ -14,35 +13,20 @@ export default function ProfilePage({ session, navigation }) {
   const [character, setCharacter] = useState(null);
 
   useEffect(() => {
-    if (session) getCharacter();
-  }, [session]);
+    if (session) {
+      const readCharacter = async () => {
+        try {
+          let characterFromBDD = await read("characters", "*", { session });
+          setCharacter(characterFromBDD);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error reading skills:", error);
+        }
+      };
 
-  async function getCharacter() {
-    try {
-      setLoading(true);
-      if (!session?.user) throw new Error("No user on the session!");
-
-      const { data, error, status } = await supabase
-        .from("characters")
-        .select("*")
-        .eq("user_id", session?.user.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setCharacter(data);
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message);
-      }
-    } finally {
-      setLoading(false);
+      readCharacter();
     }
-  }
+  }, [session]);
 
   return (
     <>
@@ -57,7 +41,9 @@ export default function ProfilePage({ session, navigation }) {
             size={60}
             color="white"
             onPress={() => {
-              navigation.navigate("Account", { session: { session } });
+              navigation.navigate("Account", {
+                session: { session },
+              });
             }}
           />
         </View>
@@ -72,7 +58,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={{ position: "absolute", bottom: 110, right: 0 }}>
                 <SlidingBarController
                   session={session}
-                  value={character.life_points}
+                  initialValue={character.life_points}
                   characteristic="life_points"
                   table="characters"
                 />
@@ -85,7 +71,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarController
                   session={session}
-                  value={character.strength}
+                  initialValue={character.strength}
                   characteristic="strength"
                   table="characters"
                 />
@@ -94,7 +80,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarController
                   session={session}
-                  value={character.dexterity}
+                  initialValue={character.dexterity}
                   characteristic="dexterity"
                   table="characters"
                 />
@@ -103,7 +89,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarController
                   session={session}
-                  value={character.stamina}
+                  initialValue={character.stamina}
                   characteristic="stamina"
                   table="characters"
                 />
@@ -112,7 +98,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarController
                   session={session}
-                  value={character.intelligence}
+                  initialValue={character.intelligence}
                   characteristic="intelligence"
                   table="characters"
                 />
@@ -121,7 +107,7 @@ export default function ProfilePage({ session, navigation }) {
               <View style={styles.row_alignCenter_gap20}>
                 <SlidingBarController
                   session={session}
-                  value={character.charisma}
+                  initialValue={character.charisma}
                   characteristic="charisma"
                   table="characters"
                 />

@@ -2,11 +2,11 @@ import React from "react";
 import SlidingBarView from "./SlidingBarView";
 import update from "../crud/update";
 
-export default SlidingBarController = ({
+const SlidingBarController = ({
   session,
-  value,
+  initialValue,
   characteristic,
-  table
+  table,
 }) => {
   const updateCharacteristic = async (newValue) => {
     const updates = {
@@ -15,11 +15,12 @@ export default SlidingBarController = ({
     await update(table, updates, { session });
   };
 
-  const handleUpdateCharacteristic = (newValue) => {
-    updateCharacteristic(newValue);
-  };
-
   return (
-    <SlidingBarView initialValue={value} onUpdate={handleUpdateCharacteristic} />
+    <SlidingBarView
+      initialValue={initialValue}
+      onUpdate={updateCharacteristic}
+    />
   );
 };
+
+export default SlidingBarController;

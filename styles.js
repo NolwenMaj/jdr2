@@ -83,6 +83,7 @@ export default Styles = StyleSheet.create({
   align30_italic: { fontSize: 30, fontStyle: "italic", textAlign: "center" },
   align20_white: { fontSize: 20, textAlign: "center", color: "white" },
   align20: { fontSize: 20, textAlign: "center" },
+  left20: { fontSize: 20, textAlign: "left" },
   align30: { fontSize: 30, textAlign: "center" },
   align40: { fontSize: 40, textAlign: "center" },
   align40_white: { fontSize: 40, textAlign: "center", color: "white" },
@@ -127,5 +128,9 @@ export default Styles = StyleSheet.create({
   },
   flexBasis: {
     flexBasis: 80,
+  },
+  lightgray_noBorder: {
+    backgroundColor: "lightgray",
+    borderWidth: 0,
   },
 });
