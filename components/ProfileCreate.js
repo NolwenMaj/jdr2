@@ -11,8 +11,9 @@ import DropDownPicker from "react-native-dropdown-picker";
 import create from "../crud/create";
 import styles from "../styles";
 import mapBackground from "../assets/map.png";
+import { useNavigation } from "@react-navigation/native";
 
-export default FormCharacter = ({ session }) => {
+export default FormCharacter = ({ session, handleCharacterCreated }) => {
   const [loading, setLoading] = useState(false);
   const [characterName, setCharacterName] = useState("");
   const [characterClasse, setCharacterClasse] = useState("");
@@ -51,6 +52,7 @@ export default FormCharacter = ({ session }) => {
       value: classe,
     }))
   );
+  const navigation = useNavigation();
   const createCharacteristic = async () => {
     const datas = {
       name: characterName,
@@ -64,6 +66,7 @@ export default FormCharacter = ({ session }) => {
       dexterity: characterDexterity,
     };
     await create("characters", datas, { session });
+    handleCharacterCreated();
   };
 
   return (

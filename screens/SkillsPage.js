@@ -5,7 +5,7 @@ import styles from "../styles";
 import mapBackground from "../assets/map.png";
 import read from "../crud/read";
 
-export default function StatsPage({ session }) {
+export default function SkillsPage({ session }) {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState(null);
 
