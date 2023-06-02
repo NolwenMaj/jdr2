@@ -6,10 +6,7 @@ export default function create(table, datas, { session }) {
 
   return supabase
     .from(table)
-    .insert([{ datas, user_id: session?.user.id }]) /*  format props : [
-        { some_column: 'someValue', other_column: 'otherValue' },
-      ]  */
-    .eq("user_id")
+    .insert([{ ...datas, user_id: session?.user.id }])
     .then(({ data, error, status }) => {
       if (error && status !== 406) {
         throw error;
