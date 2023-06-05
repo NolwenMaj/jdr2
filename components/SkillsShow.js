@@ -6,11 +6,12 @@ import mapBackground from "../assets/map.png";
 export default SkillsShow = ({ skills, session, navigation }) => {
   return (
     <>
-      <ImageBackground
-        source={mapBackground}
-        resizeMode="cover"
-        style={styles.map}
-      >
+         <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={[styles.map_center]}
+      imageStyle={{ opacity: 0.5 }}
+    >
         <ScrollView>
           <View style={{ margin: 20 }}>
             {skills ? (

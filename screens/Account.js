@@ -74,72 +74,69 @@ export default function Account({ session }) {
   };
 
   return (
-    <>
-      <ImageBackground
-        source={mapBackground}
-        resizeMode="cover"
-        style={[styles.map, styles.center_p30]}
-      >
-        <View>
-          <View style={styles.px4_stretch}>
+    <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={[styles.map_center, styles.p30]}
+      imageStyle={{ opacity: 0.5 }}
+    >
+      <View>
+        <View style={styles.px4_stretch}>
+          <Input
+            label={<Text style={styles.left20}>Email</Text>}
+            value={session?.user?.email}
+            disabled
+          />
+        </View>
+        <View style={[styles.row]}>
+          <View style={styles.input}>
+            <Text style={styles.left20}>Nom</Text>
             <Input
-              label={<Text style={styles.left20}>Email</Text>}
-              value={session?.user?.email}
-              disabled
+              value={characterName || ""}
+              onChangeText={(text) => setCharacterName({ text })}
             />
           </View>
-          <View style={[styles.row]}>
-            <View style={styles.input}>
-              <Text style={styles.left20}>Nom</Text>
-              <Input
-                value={characterName || ""}
-                onChangeText={(text) => setCharacterName({ text })}
-              />
-            </View>
 
-            <View style={styles.input}>
-              <Text style={styles.align20}>Age</Text>
-              <Input
-                value={characterAge.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterAge(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
-            </View>
-          </View>
-
-          <Text style={styles.left20}>Classe</Text>
-          <DropDownPicker
-            style={styles.lightgray_noBorder}
-            open={open}
-            value={characterClasse}
-            items={objClasses}
-            setOpen={setOpen}
-            setValue={setCharacterClasse}
-            setItems={setObjClasses}
-            dropDownContainerStyle={[styles.lightgray_noBorder]}
-          />
-          <View style={[styles.px4_stretch]}>
-            <TouchableOpacity
-              style={styles.btnForms}
-              onPress={() => {
-                setLoading(true);
-                updateCharacteristic();
-                setLoading(false);
+          <View style={styles.input}>
+            <Text style={styles.align20}>Age</Text>
+            <Input
+              value={characterAge.toString()}
+              keyboardType="numeric"
+              onChangeText={(text) => {
+                const numericValue = parseInt(text, 10);
+                setCharacterAge(Number.isNaN(numericValue) ? 0 : numericValue);
               }}
-            >
-              <Text style={[styles.left20, styles.bold]}>
-                {loading ? "Chargement ..." : "Valider"}
-              </Text>
-            </TouchableOpacity>
+            />
           </View>
-          <SignOut />
         </View>
-      </ImageBackground>
-    </>
+
+        <Text style={styles.left20}>Classe</Text>
+        <DropDownPicker
+          style={styles.lightgray_noBorder}
+          open={open}
+          value={characterClasse}
+          items={objClasses}
+          setOpen={setOpen}
+          setValue={setCharacterClasse}
+          setItems={setObjClasses}
+          dropDownContainerStyle={[styles.lightgray_noBorder]}
+        />
+        <View style={[styles.px4_stretch]}>
+          <TouchableOpacity
+            style={styles.btnForms}
+            onPress={() => {
+              setLoading(true);
+              updateCharacteristic();
+              setLoading(false);
+            }}
+          >
+            <Text style={[styles.left20, styles.bold]}>
+              {loading ? "Chargement ..." : "Valider"}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <SignOut />
+      </View>
+    </ImageBackground>
   );
 }

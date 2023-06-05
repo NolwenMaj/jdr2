@@ -74,11 +74,12 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
 
   return (
     <>
-      <ImageBackground
-        source={mapBackground}
-        resizeMode="cover"
-        style={styles.map_center}
-      >
+        <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={[styles.map_center]}
+      imageStyle={{ opacity: 0.5 }}
+    >
         <KeyboardAvoidingView
           style={styles.keyboardContainer}
           behavior="padding"

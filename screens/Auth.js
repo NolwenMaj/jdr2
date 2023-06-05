@@ -16,7 +16,8 @@ export default function Auth() {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={[styles.map, styles.p30]}
+      style={[styles.map_center, styles.p30]}
+      imageStyle={{ opacity: 0.5 }}
     >
       <View style={[styles.px4_stretch, styles.mt20]}>
         <Input
@@ -24,7 +25,6 @@ export default function Auth() {
           leftIcon={{ type: "font-awesome", name: "envelope" }}
           onChangeText={(text) => setEmail(text)}
           value={email}
-          placeholder="email@address.com"
           autoCapitalize={"none"}
           labelStyle=""
         />
@@ -36,7 +36,6 @@ export default function Auth() {
           onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
-          placeholder="Password"
           autoCapitalize={"none"}
         />
       </View>

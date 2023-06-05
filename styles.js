@@ -70,8 +70,8 @@ export default Styles = StyleSheet.create({
   // VALIDEES
 
   //bg
-  map_center: { flex: 1, opacity: 0.5, alignItems: "center" },
-  map: { flex: 1, opacity: 0.5 },
+  map_center: { flex: 1, alignItems: "center" },
+  map: { flex: 1 },
   bg_black: {
     backgroundColor: "black",
   },

@@ -13,7 +13,8 @@ export default RollDicePage = () => {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={styles.map_center}
+        style={[styles.map_center]}
+        imageStyle={{ opacity: 0.5 }}
       >
         <View
           style={[

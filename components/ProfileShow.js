@@ -32,7 +32,8 @@ export default function ProfilePage({ session, navigation }) {
       <ImageBackground
         source={mapBackground}
         resizeMode="cover"
-        style={styles.map_center}
+        style={[styles.map_center]}
+        imageStyle={{ opacity: 0.5 }}
       >
         <View style={{ position: "absolute", top: 20, right: 20 }}>
           <AntDesign

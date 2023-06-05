@@ -23,5 +23,3 @@ export default ButtonDices = ({ maxDice, setResult, setDicePosition }) => {
     </TouchableHighlight>
   );
 };
-
-
