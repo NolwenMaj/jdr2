@@ -1,8 +1,8 @@
 import React from "react";
-import SlidingBarView from "./SlidingBarView";
+import SlidingBarView from "./SlidingBar_View";
 import update from "../crud/update";
 
-export default SlidingBarController = ({
+export default SlidingBar_Controller = ({
   session,
   initialValue,
   characteristic,
@@ -22,5 +22,3 @@ export default SlidingBarController = ({
     />
   );
 };
-
-

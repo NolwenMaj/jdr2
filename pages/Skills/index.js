@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import read from "../crud/read";
-import ProfileCreate from "../components/ProfileCreate";
-import SkillsShow from "../components/SkillsShow";
+import read from "../../crud/read";
+import ProfileCreate from "../../components/ProfileCreate";
+import Skills_View from "./Skills_View";
 
 export default function SkillsPage({ session, navigation }) {
   const [loading, setLoading] = useState(true);
@@ -27,7 +27,11 @@ export default function SkillsPage({ session, navigation }) {
   return (
     <>
       {skills ? (
-        <SkillsShow session={session} navigation={navigation} skills={skills} />
+        <Skills_View
+          session={session}
+          navigation={navigation}
+          skills={skills}
+        />
       ) : (
         <ProfileCreate
           session={session}

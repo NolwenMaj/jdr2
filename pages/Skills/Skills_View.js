@@ -1,23 +1,23 @@
 import { ImageBackground, Text, View, ScrollView } from "react-native";
-import SlidingBarController from "../components/SlidingBarController";
-import styles from "../styles";
-import mapBackground from "../assets/map.png";
+import SlidingBar_Controller from "../../components/SlidingBar_Controller";
+import styles from "../../lib/styles.js";
+import mapBackground from "../../assets/map.png";
 
-export default SkillsShow = ({ skills, session, navigation }) => {
+export default Skills_View = ({ skills, session, navigation }) => {
   return (
     <>
-         <ImageBackground
-      source={mapBackground}
-      resizeMode="cover"
-      style={[styles.map_center]}
-      imageStyle={{ opacity: 0.5 }}
-    >
+      <ImageBackground
+        source={mapBackground}
+        resizeMode="cover"
+        style={[styles.map_center]}
+        imageStyle={{ opacity: 0.5 }}
+      >
         <ScrollView>
           <View style={{ margin: 20 }}>
             {skills ? (
               <View key={skills.id}>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.arts_and_crafts}
@@ -26,7 +26,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Artisanat/Construction</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.ranged_combat}
@@ -35,7 +35,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Combat à distance</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.close_combat}
@@ -44,7 +44,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Combat rapproché</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.nature_knowledge}
@@ -53,7 +53,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Connaissance de la nature</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.secrets_knowledge}
@@ -62,7 +62,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Connaissance des secrets</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.running_jumping}
@@ -71,7 +71,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Courir/Sauter</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.discretion}
@@ -80,7 +80,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Discrétion</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.dodging}
@@ -89,7 +89,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Esquiver</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.intimidating}
@@ -98,7 +98,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Intimider</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.reading_writing}
@@ -107,7 +107,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Lire/Ecrire</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.lying_convincing}
@@ -116,7 +116,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Mentir/Convaincre</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.perception}
@@ -125,7 +125,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Perception</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.psychology}
@@ -134,7 +134,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Psychologie</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.reflexes}
@@ -143,7 +143,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Réflexes</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.locks_and_traps}
@@ -152,7 +152,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Serrures et pièges</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.treating}
@@ -161,7 +161,7 @@ export default SkillsShow = ({ skills, session, navigation }) => {
                   <Text style={styles.align20}>Soigner</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap10}>
-                  <SlidingBarController
+                  <SlidingBar_Controller
                     session={session}
                     table="skills"
                     initialValue={skills.stealing}

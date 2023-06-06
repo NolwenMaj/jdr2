@@ -1,4 +1,4 @@
-import { supabase } from "../lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { Alert } from "react-native";
 
 export default function signUpWithEmail(password, email) {

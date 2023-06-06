@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import read from "../crud/read";
+import read from "../../crud/read";
 
-import ProfileShow from "../components/ProfileShow";
-import ProfileCreate from "../components/ProfileCreate";
+import Profile_View from "./Profile_View";
+import ProfileCreate from "../../components/ProfileCreate";
 
 export default function ProfilePage({ session, navigation }) {
   const [character, setCharacter] = useState(null);
@@ -27,7 +27,7 @@ export default function ProfilePage({ session, navigation }) {
   return (
     <>
       {character ? (
-        <ProfileShow session={session} navigation={navigation} />
+        <Profile_View session={session} navigation={navigation} />
       ) : (
         <ProfileCreate
           session={session}

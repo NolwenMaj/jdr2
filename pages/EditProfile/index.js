@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../lib/supabase";
+import { supabase } from "../../lib/supabase";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import { Input } from "react-native-elements";
 import { Session } from "@supabase/supabase-js";
 import DropDownPicker from "react-native-dropdown-picker";
-import read from "../crud/read";
-import update from "../crud/update";
-import SlidingBarController from "../components/SlidingBarController";
-import SignOut from "../components/SignOut";
+import read from "../../crud/read";
+import update from "../../crud/update";
+import SignOut from "./SignOut";
+import styles from "../../lib/styles.js";
+import mapBackground from "../../assets/map.png";
 
-import styles from "../styles";
-import mapBackground from "../assets/map.png";
-
-export default function Account({ session }) {
+export default function EditProfilePage({ session }) {
   const [loading, setLoading] = useState(true);
   const [characterName, setCharacterName] = useState(null);
   const [characterClasse, setCharacterClasse] = useState(null);
