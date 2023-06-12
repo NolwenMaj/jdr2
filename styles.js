@@ -131,7 +131,7 @@ export default Styles = StyleSheet.create({
   },
   input: {
     flexBasis: "auto",
-    minWidth: 200,
+    minWidth: 150,
   },
   flexBasis: {
     flexBasis: 80,
