@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ProfilePage from "../screens/ProfilePage";
-import Account from "../screens/Account";
+import ProfilePage from "../pages/Profile";
+import EditProfilePage from "../pages/EditProfile/index";
 const Stack = createNativeStackNavigator();
 
 export default StackProfile = ({ session }) => {
@@ -28,7 +28,7 @@ export default StackProfile = ({ session }) => {
           session: session,
         })}
       >
-        {(props) => <Account {...props} session={session} />}
+        {(props) => <EditProfilePage {...props} session={session} />}
       </Stack.Screen>
     </Stack.Navigator>
   );

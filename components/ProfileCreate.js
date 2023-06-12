@@ -7,12 +7,12 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { Input } from "react-native-elements";
+import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import create from "../crud/create";
-import styles from "../styles";
+import styles from "../lib/styles";
 import mapBackground from "../assets/map.png";
-import { useNavigation } from "@react-navigation/native";
-import GenerateSkills from "./GenerateSkills";
+import generateSkills from "../lib/generateSkills";
 
 export default ProfileCreate = ({ session, handleCharacterCreated }) => {
   const [loading, setLoading] = useState(false);
@@ -68,18 +68,18 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
       dexterity: characterDexterity,
     };
     await create("characters", characteristics, { session });
-    GenerateSkills(characteristics, { session });
+    generateSkills(characteristics, { session });
     handleCharacterCreated();
   };
 
   return (
     <>
-        <ImageBackground
-      source={mapBackground}
-      resizeMode="cover"
-      style={[styles.map_center]}
-      imageStyle={{ opacity: 0.5 }}
-    >
+      <ImageBackground
+        source={mapBackground}
+        resizeMode="cover"
+        style={[styles.map_center]}
+        imageStyle={{ opacity: 0.5 }}
+      >
         <KeyboardAvoidingView
           style={styles.keyboardContainer}
           behavior="padding"

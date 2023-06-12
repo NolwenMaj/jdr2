@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import { View, StyleSheet } from "react-native";
+import styles from "./lib/styles";
 
-// Import components
-import Auth from "./screens/Auth";
-import Navigator from "./components/Navigator";
+import Auth from "./pages/Auth/index";
+import Navigator from "./navigation/Navigator";
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -26,15 +26,8 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.flex_end}>
       {session && session.user ? <Navigator session={session} /> : <Auth />}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-});

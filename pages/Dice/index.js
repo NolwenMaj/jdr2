@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, useWindowDimensions, ImageBackground } from "react-native";
-import styles from "../styles";
-import mapBackground from "../assets/map.png";
-import ButtonDices from "../components/ButtonDices";
+import styles from "../../lib/styles";
+import mapBackground from "../../assets/map.png";
+import ButtonDices from "./ButtonDices";
 
-export default RollDicePage = () => {
+export default DicePage = () => {
   const [result, setResult] = useState("");
   const [dicePosition, setDicePosition] = useState({ x: 2.65, y: -6 });
 

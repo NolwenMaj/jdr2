@@ -5,8 +5,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 const Tab = createBottomTabNavigator();
 
-import RollDicePage from "../screens/RollDicePage";
-import SkillsPage from "../screens/SkillsPage";
+import DicePage from "../pages/Dice/index";
+import SkillsPage from "../pages/Skills/index";
 import StackProfile from "./StackProfile";
 
 export default function Navigator({ session }) {
@@ -31,7 +31,7 @@ export default function Navigator({ session }) {
           name="Dice"
           options={() => ({ title: "Dés", session: session })}
         >
-          {(props) => <RollDicePage {...props} session={session} />}
+          {(props) => <DicePage {...props} session={session} />}
         </Tab.Screen>
         <Tab.Screen
           name="Skills"

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { ImageBackground, View, TouchableOpacity, Text } from "react-native";
 import { Input } from "react-native-elements";
-import styles from "../styles";
-import mapBackground from "../assets/map.png";
+import styles from "../../lib/styles";
+import mapBackground from "../../assets/map.png";
 
-import signUpWithEmail from "../components/SignUp";
-import signInWithEmail from "../components/SignIn";
+import signUpWithEmail from "./SignUp";
+import signInWithEmail from "./SignIn";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -39,7 +39,6 @@ export default function Auth() {
           autoCapitalize={"none"}
         />
       </View>
-
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign in"
@@ -59,7 +58,6 @@ export default function Auth() {
           <Text style={[styles.align20, styles.bold]}>Connexion</Text>
         </TouchableOpacity>
       </View>
-
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign up"

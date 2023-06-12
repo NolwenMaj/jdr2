@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Animated, PanResponder, Text } from "react-native";
-import styles from "../styles";
+import styles from "../lib/styles";
 
-export default SlidingBarView = ({ initialValue, onUpdate }) => {
+export default SlidingBar_View = ({ initialValue, onUpdate }) => {
   const [value, setValue] = useState(initialValue);
   const pan = useState(new Animated.Value(0))[0];
 
@@ -38,10 +38,7 @@ export default SlidingBarView = ({ initialValue, onUpdate }) => {
 
   return (
     <View>
-      <View
-        style={styles.bgRoundBtns}
-        {...panResponder.panHandlers}
-      >
+      <View style={styles.bgRoundBtns} {...panResponder.panHandlers}>
         <Animated.View
           style={[
             styles.roundBtns,
