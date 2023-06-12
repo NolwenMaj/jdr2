@@ -1,4 +1,4 @@
-import { Image, ImageBackground, Text, View, Alert } from "react-native";
+import { Image, ImageBackground, Text, View, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import read from "../crud/read";
@@ -28,13 +28,13 @@ export default function ProfilePage({ session, navigation }) {
   }, [session]);
 
   return (
-    <>
-      <ImageBackground
-        source={mapBackground}
-        resizeMode="cover"
-        style={[styles.map_center]}
-        imageStyle={{ opacity: 0.5 }}
-      >
+    <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={[styles.map_center]}
+      imageStyle={{ opacity: 0.5 }}
+    >
+      <ScrollView>
         <View style={{ position: "absolute", top: 20, right: 20 }}>
           <AntDesign
             name="setting"
@@ -118,7 +118,7 @@ export default function ProfilePage({ session, navigation }) {
         ) : (
           <Text>Loading character...</Text>
         )}
-      </ImageBackground>
-    </>
+      </ScrollView>
+    </ImageBackground>
   );
 }
