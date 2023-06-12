@@ -84,7 +84,7 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
           style={styles.keyboardContainer}
           behavior="padding"
         >
-          <View style={{ width: 350 }}>
+          <View style={{ width: 300, paddingTop: 20 }}>
             <View>
               <Text style={styles.left20}>Nom</Text>
               <Input
@@ -92,19 +92,7 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
                 onChangeText={(text) => setCharacterName(text)}
               />
             </View>
-            <View>
-              <Text style={styles.left20}>Age</Text>
-              <Input
-                value={characterAge.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterAge(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
-            </View>
+
             <Text style={styles.left20}>Classe</Text>
             <DropDownPicker
               style={styles.lightgray_noBorder}
@@ -116,70 +104,88 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
               setItems={setObjClasses}
               dropDownContainerStyle={[styles.lightgray_noBorder]}
             />
-            <View>
-              <Text style={styles.left20}>Force</Text>
-              <Input
-                value={characterStrength.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterStrength(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
+            <View style={[styles.row, { paddingTop: 20 }]}>
+              <View>
+                <Text style={styles.left20}>Age</Text>
+                <Input
+                  value={characterAge.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterAge(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
+              <View>
+                <Text style={styles.left20}>Force</Text>
+                <Input
+                  value={characterStrength.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterStrength(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
+              <View>
+                <Text style={styles.left20}>Dextérité</Text>
+                <Input
+                  value={characterDexterity.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterDexterity(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
             </View>
-            <View>
-              <Text style={styles.left20}>Dextérité</Text>
-              <Input
-                value={characterDexterity.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterDexterity(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
-            </View>
-            <View>
-              <Text style={styles.left20}>Endurance</Text>
-              <Input
-                value={characterStamina.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterStamina(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
-            </View>
-            <View>
-              <Text style={styles.left20}>Intelligence</Text>
-              <Input
-                value={characterIntelligence.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterIntelligence(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
-            </View>
-            <View>
-              <Text style={styles.left20}>Charisme</Text>
-              <Input
-                value={characterCharisma.toString()}
-                keyboardType="numeric"
-                onChangeText={(text) => {
-                  const numericValue = parseInt(text, 10);
-                  setCharacterCharisma(
-                    Number.isNaN(numericValue) ? 0 : numericValue
-                  );
-                }}
-              />
+            <View style={styles.row}>
+              <View>
+                <Text style={styles.left20}>Endurance</Text>
+                <Input
+                  value={characterStamina.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterStamina(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
+
+              <View>
+                <Text style={styles.left20}>Intelligence</Text>
+                <Input
+                  value={characterIntelligence.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterIntelligence(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
+              <View>
+                <Text style={styles.left20}>Charisme</Text>
+                <Input
+                  value={characterCharisma.toString()}
+                  keyboardType="numeric"
+                  onChangeText={(text) => {
+                    const numericValue = parseInt(text, 10);
+                    setCharacterCharisma(
+                      Number.isNaN(numericValue) ? 0 : numericValue
+                    );
+                  }}
+                />
+              </View>
             </View>
             <View>
               <TouchableOpacity
