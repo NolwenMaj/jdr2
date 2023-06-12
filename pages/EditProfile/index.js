@@ -75,7 +75,7 @@ export default function EditProfilePage({ session }) {
     <ImageBackground
       source={mapBackground}
       resizeMode="cover"
-      style={[styles.map_center, styles.p30]}
+      style={[styles.map, styles.p30]}
       imageStyle={{ opacity: 0.5 }}
     >
       <View>
