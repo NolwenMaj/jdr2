@@ -73,142 +73,131 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
   };
 
   return (
-    <>
-      <ImageBackground
-        source={mapBackground}
-        resizeMode="cover"
-        style={[styles.map_center]}
-        imageStyle={{ opacity: 0.5 }}
-      >
-        <KeyboardAvoidingView
-          style={styles.keyboardContainer}
-          behavior="padding"
-        >
-          <View style={{ width: 300, paddingTop: 20 }}>
-            <View>
-              <Text style={styles.left20}>Nom</Text>
+    <ImageBackground
+      source={mapBackground}
+      resizeMode="cover"
+      style={[styles.map_center]}
+      imageStyle={{ opacity: 0.5 }}
+    >
+      <KeyboardAvoidingView style={styles.keyboardContainer} behavior="padding">
+        <View style={{ width: 300, paddingTop: 20 }}>
+          <View>
+            <Text style={styles.left20}>Nom</Text>
+            <Input
+              value={characterName || ""}
+              onChangeText={(text) => setCharacterName(text)}
+            />
+          </View>
+
+          <Text style={styles.left20}>Classe</Text>
+          <DropDownPicker
+            style={styles.lightgray_noBorder}
+            open={open}
+            value={characterClasse}
+            items={objClasses}
+            setOpen={setOpen}
+            setValue={setCharacterClasse}
+            setItems={setObjClasses}
+            dropDownContainerStyle={[styles.lightgray_noBorder]}
+          />
+          <View style={[styles.row, { paddingTop: 20 }]}>
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Age</Text>
               <Input
-                value={characterName || ""}
-                onChangeText={(text) => setCharacterName(text)}
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterAge(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
+                }}
+              />
+            </View>
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Force</Text>
+              <Input
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterStrength(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
+                }}
+              />
+            </View>
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Dextérité</Text>
+              <Input
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterDexterity(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
+                }}
+              />
+            </View>
+          </View>
+          <View style={styles.row}>
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Endurance</Text>
+              <Input
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterStamina(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
+                }}
               />
             </View>
 
-            <Text style={styles.left20}>Classe</Text>
-            <DropDownPicker
-              style={styles.lightgray_noBorder}
-              open={open}
-              value={characterClasse}
-              items={objClasses}
-              setOpen={setOpen}
-              setValue={setCharacterClasse}
-              setItems={setObjClasses}
-              dropDownContainerStyle={[styles.lightgray_noBorder]}
-            />
-            <View style={[styles.row, { paddingTop: 20 }]}>
-              <View>
-                <Text style={styles.left20}>Age</Text>
-                <Input
-                  value={characterAge.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterAge(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.left20}>Force</Text>
-                <Input
-                  value={characterStrength.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterStrength(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.left20}>Dextérité</Text>
-                <Input
-                  value={characterDexterity.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterDexterity(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-            </View>
-            <View style={styles.row}>
-              <View>
-                <Text style={styles.left20}>Endurance</Text>
-                <Input
-                  value={characterStamina.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterStamina(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-
-              <View>
-                <Text style={styles.left20}>Intelligence</Text>
-                <Input
-                  value={characterIntelligence.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterIntelligence(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-              <View>
-                <Text style={styles.left20}>Charisme</Text>
-                <Input
-                  value={characterCharisma.toString()}
-                  keyboardType="numeric"
-                  onChangeText={(text) => {
-                    const numericValue = parseInt(text, 10);
-                    setCharacterCharisma(
-                      Number.isNaN(numericValue) ? 0 : numericValue
-                    );
-                  }}
-                />
-              </View>
-            </View>
-            <View>
-              <TouchableOpacity
-                style={styles.btnForms}
-                onPress={() => {
-                  setLoading(true);
-                  createCharacteristic()
-                    .then(() => {
-                      setLoading(false);
-                    })
-                    .catch(() => {
-                      setLoading(false);
-                    });
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Intelligence</Text>
+              <Input
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterIntelligence(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
                 }}
-              >
-                <Text style={[styles.left20, styles.bold]}>
-                  {loading ? "Chargement ..." : "Valider"}
-                </Text>
-              </TouchableOpacity>
+              />
+            </View>
+            <View style={{ minWidth: 100 }}>
+              <Text style={styles.left20}>Charisme</Text>
+              <Input
+                keyboardType="numeric"
+                onChangeText={(text) => {
+                  const numericValue = parseInt(text, 10);
+                  setCharacterCharisma(
+                    Number.isNaN(numericValue) ? 0 : numericValue
+                  );
+                }}
+              />
             </View>
           </View>
-        </KeyboardAvoidingView>
-      </ImageBackground>
-    </>
+          <View>
+            <TouchableOpacity
+              style={styles.btnForms}
+              onPress={() => {
+                setLoading(true);
+                createCharacteristic()
+                  .then(() => {
+                    setLoading(false);
+                  })
+                  .catch(() => {
+                    setLoading(false);
+                  });
+              }}
+            >
+              <Text style={[styles.left20, styles.bold]}>
+                {loading ? "Chargement ..." : "Valider"}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 };
