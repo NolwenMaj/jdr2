@@ -20,9 +20,9 @@ export default function App() {
       setSession(session);
     });
 
-    return () => {
+    /* return () => {
       listener.unsubscribe();
-    };
+    }; */
   }, []);
 
   return (

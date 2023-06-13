@@ -101,14 +101,14 @@
 //             </View>
 //             <Text style={styles.left20}>Classe</Text>
 //             <DropDownPicker
-//               style={styles.lightgray_noBorder}
+//               style={styles.beige_noBorder}
 //               open={open}
 //               value={characterClasse}
 //               items={objClasses}
 //               setOpen={setOpen}
 //               setValue={setCharacterClasse}
 //               setItems={setObjClasses}
-//               dropDownContainerStyle={[styles.lightgray_noBorder]}
+//               dropDownContainerStyle={[styles.beige_noBorder]}
 //             />
 //             <View>
 //               <Text style={styles.left20}>Force</Text>

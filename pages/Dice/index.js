@@ -20,8 +20,9 @@ export default DicePage = () => {
           style={[
             styles.diceBoard,
             {
-              height: useWindowDimensions().height * 0.6,
+              height: useWindowDimensions().height * 0.55,
               width: useWindowDimensions().width * 0.8,
+              marginBottom: 20,
             },
           ]}
         >
@@ -31,10 +32,10 @@ export default DicePage = () => {
               { left: dicePosition.x * 30, top: dicePosition.y * -30 },
             ]}
           >
-            <Text style={styles.align40_white}>{result}</Text>
+            <Text style={[styles.align40, styles.beige]}>{result}</Text>
           </View>
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_alignCenter_gap20}>
           <ButtonDices
             maxDice={3}
             setResult={setResult}
@@ -50,6 +51,8 @@ export default DicePage = () => {
             setResult={setResult}
             setDicePosition={setDicePosition}
           />
+        </View>
+        <View style={styles.row_alignCenter_gap20}>
           <ButtonDices
             maxDice={9}
             setResult={setResult}

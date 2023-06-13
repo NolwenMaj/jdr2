@@ -1,6 +1,21 @@
 import { StyleSheet } from "react-native";
-
+const darkBlue = "#029E98";
+const lightBlue = "#BFFFFD";
+const superLightBlue = "#CFE8E7";
+const chestnut = "#736A65";
+const beige = "#F4EFE8";
 export default styles = StyleSheet.create({
+  //colors
+  superLightBlue: {
+    color: superLightBlue,
+  },
+  beige: {
+    color: beige,
+  },
+  chestnut: {
+    color: chestnut,
+  },
+
   // background
   map_center: { flex: 1, alignItems: "center" },
   map: { flex: 1 },
@@ -9,6 +24,10 @@ export default styles = StyleSheet.create({
   },
   bg_white: {
     backgroundColor: "white",
+  },
+  beige_noBorder: {
+    backgroundColor: beige,
+    borderWidth: 0,
   },
 
   //image
@@ -19,12 +38,18 @@ export default styles = StyleSheet.create({
   },
 
   //text
-  align30_italic: { fontSize: 30, fontStyle: "italic", textAlign: "center" },
+  align30_italic: {
+    fontSize: 30,
+    fontStyle: "italic",
+    textAlign: "center",
+    color: chestnut,
+  },
   align20_white: { fontSize: 20, textAlign: "center", color: "white" },
-  align20: { fontSize: 20, textAlign: "center" },
-  left20: { fontSize: 20, textAlign: "left" },
-  align30: { fontSize: 30, textAlign: "center" },
-  align40: { fontSize: 40, textAlign: "center" },
+  align20: { fontSize: 20, textAlign: "center", color: chestnut },
+  align20_chestnut: { fontSize: 20, textAlign: "center", color: chestnut },
+  left20: { fontSize: 20, textAlign: "left", color: chestnut },
+  align30: { fontSize: 30, textAlign: "center", color: chestnut },
+  align40: { fontSize: 40, textAlign: "center", color: chestnut },
   align40_white: { fontSize: 40, textAlign: "center", color: "white" },
   bold: { fontWeight: "500" },
 
@@ -32,18 +57,18 @@ export default styles = StyleSheet.create({
   btnForms: {
     padding: 12,
     borderRadius: 12,
-    backgroundColor: "grey",
+    backgroundColor: chestnut,
   },
   roundBtns: {
     width: 60,
     height: 60,
     borderRadius: 1000,
     justifyContent: "center",
-    backgroundColor: "grey",
+    backgroundColor: superLightBlue,
   },
   bgRoundBtns: {
     height: 60,
-    backgroundColor: "lightgray",
+    backgroundColor: lightBlue,
     margin: 5,
     borderRadius: 1000,
   },
@@ -56,6 +81,9 @@ export default styles = StyleSheet.create({
   },
   mt20: {
     marginTop: 20,
+  },
+  mt40: {
+    marginTop: 40,
   },
   px20: {
     paddingVertical: 20,
@@ -71,6 +99,10 @@ export default styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     gap: 10,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   p30: {
     padding: 30,
@@ -92,16 +124,25 @@ export default styles = StyleSheet.create({
     borderRadius: 20,
     margin: 20,
     padding: 5,
-    backgroundColor: "black",
+    backgroundColor: chestnut,
     justifyContent: "center",
-    opacity: 10,
+    opacity: 1,
   },
   diceBoard: {
     marginTop: 50,
-    backgroundColor: "white",
+    backgroundColor: superLightBlue,
     borderRadius: 10,
     borderWidth: 10,
-    borderColor: "white",
+    borderColor: superLightBlue,
     opacity: 0.5,
+  },
+  dices: {
+    backgroundColor: chestnut,
+    padding: 5,
+    margin: 5,
+    borderRadius: 5,
+    height: 50,
+    width: 50,
+    justifyContent: "center",
   },
 });

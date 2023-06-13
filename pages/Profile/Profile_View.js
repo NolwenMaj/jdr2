@@ -35,11 +35,11 @@ export default function Profile_View({ session, navigation }) {
     >
       <ScrollView>
         <View style={[styles.map_center]}>
-          <View style={{ position: "absolute", top: 0, right: 0 }}>
+          <View style={{ position: "absolute", top: 10, right: 10 }}>
             <AntDesign
               name="setting"
               size={60}
-              color="white"
+              color="#736A65"
               onPress={() => {
                 navigation.navigate("Account", {
                   session: { session },
@@ -55,7 +55,7 @@ export default function Profile_View({ session, navigation }) {
                   resizeMode="cover"
                   style={styles.avatar}
                 />
-                <View style={{ position: "absolute", bottom: 110, right: 0 }}>
+                <View style={{ position: "absolute", bottom: 80, right: 0 }}>
                   <SlidingBar_Controller
                     session={session}
                     initialValue={character.life_points}
@@ -64,8 +64,9 @@ export default function Profile_View({ session, navigation }) {
                   />
                 </View>
                 <Text style={styles.align40}>{character.name}</Text>
-                <Text style={styles.align30_italic}>{character.class}</Text>
-                <Text style={styles.align20}>{character.age} ans</Text>
+                <Text style={styles.align20}>
+                  {character.class}, {character.age} ans
+                </Text>
               </View>
               <View>
                 <View style={styles.row_alignCenter_gap20}>
@@ -75,7 +76,7 @@ export default function Profile_View({ session, navigation }) {
                     characteristic="strength"
                     table="characters"
                   />
-                  <Text style={styles.align30}>Force</Text>
+                  <Text style={[styles.align30, styles.bold]}>Force</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap20}>
                   <SlidingBar_Controller
@@ -84,7 +85,7 @@ export default function Profile_View({ session, navigation }) {
                     characteristic="dexterity"
                     table="characters"
                   />
-                  <Text style={styles.align30}>Dextérité</Text>
+                  <Text style={[styles.align30, styles.bold]}>Dextérité</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap20}>
                   <SlidingBar_Controller
@@ -93,7 +94,7 @@ export default function Profile_View({ session, navigation }) {
                     characteristic="stamina"
                     table="characters"
                   />
-                  <Text style={styles.align30}>Endurance</Text>
+                  <Text style={[styles.align30, styles.bold]}>Endurance</Text>
                 </View>
                 <View style={styles.row_alignCenter_gap20}>
                   <SlidingBar_Controller
@@ -102,7 +103,9 @@ export default function Profile_View({ session, navigation }) {
                     characteristic="intelligence"
                     table="characters"
                   />
-                  <Text style={styles.align30}>Intelligence</Text>
+                  <Text style={[styles.align30, styles.bold]}>
+                    Intelligence
+                  </Text>
                 </View>
                 <View style={styles.row_alignCenter_gap20}>
                   <SlidingBar_Controller
@@ -111,7 +114,7 @@ export default function Profile_View({ session, navigation }) {
                     characteristic="charisma"
                     table="characters"
                   />
-                  <Text style={styles.align30}>Charisme</Text>
+                  <Text style={[styles.align30, styles.bold]}>Charisme</Text>
                 </View>
               </View>
             </View>

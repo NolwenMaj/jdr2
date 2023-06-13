@@ -91,14 +91,14 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
 
           <Text style={styles.left20}>Classe</Text>
           <DropDownPicker
-            style={styles.lightgray_noBorder}
+            style={styles.beige_noBorder}
             open={open}
             value={characterClasse}
             items={objClasses}
             setOpen={setOpen}
             setValue={setCharacterClasse}
             setItems={setObjClasses}
-            dropDownContainerStyle={[styles.lightgray_noBorder]}
+            dropDownContainerStyle={[styles.beige_noBorder]}
           />
           <View style={[styles.row, { paddingTop: 20 }]}>
             <View style={{ minWidth: 100 }}>

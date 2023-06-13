@@ -21,7 +21,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.arts_and_crafts}
                   characteristic="arts_and_crafts"
                 />
-                <Text style={styles.align20}>Artisanat/Construction</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Artisanat/Construction
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -30,7 +32,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.ranged_combat}
                   characteristic="ranged_combat"
                 />
-                <Text style={styles.align20}>Combat à distance</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Combat à distance
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -39,7 +43,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.close_combat}
                   characteristic="close_combat"
                 />
-                <Text style={styles.align20}>Combat rapproché</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Combat rapproché
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -48,7 +54,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.nature_knowledge}
                   characteristic="nature_knowledge"
                 />
-                <Text style={styles.align20}>Connaissance de la nature</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Connaissance de la nature
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -57,7 +65,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.secrets_knowledge}
                   characteristic="secrets_knowledge"
                 />
-                <Text style={styles.align20}>Connaissance des secrets</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Connaissance des secrets
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -66,7 +76,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.running_jumping}
                   characteristic="running_jumping"
                 />
-                <Text style={styles.align20}>Courir/Sauter</Text>
+                <Text style={[styles.align20, styles.bold]}>Courir/Sauter</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -75,7 +85,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.discretion}
                   characteristic="discretion"
                 />
-                <Text style={styles.align20}>Discrétion</Text>
+                <Text style={[styles.align20, styles.bold]}>Discrétion</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -84,7 +94,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.dodging}
                   characteristic="dodging"
                 />
-                <Text style={styles.align20}>Esquiver</Text>
+                <Text style={[styles.align20, styles.bold]}>Esquiver</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -93,7 +103,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.intimidating}
                   characteristic="intimidating"
                 />
-                <Text style={styles.align20}>Intimider</Text>
+                <Text style={[styles.align20, styles.bold]}>Intimider</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -102,7 +112,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.reading_writing}
                   characteristic="reading_writing"
                 />
-                <Text style={styles.align20}>Lire/Ecrire</Text>
+                <Text style={[styles.align20, styles.bold]}>Lire/Ecrire</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -111,7 +121,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.lying_convincing}
                   characteristic="lying_convincing"
                 />
-                <Text style={styles.align20}>Mentir/Convaincre</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Mentir/Convaincre
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -120,7 +132,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.perception}
                   characteristic="perception"
                 />
-                <Text style={styles.align20}>Perception</Text>
+                <Text style={[styles.align20, styles.bold]}>Perception</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -129,7 +141,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.psychology}
                   characteristic="psychology"
                 />
-                <Text style={styles.align20}>Psychologie</Text>
+                <Text style={[styles.align20, styles.bold]}>Psychologie</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -138,7 +150,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.reflexes}
                   characteristic="reflexes"
                 />
-                <Text style={styles.align20}>Réflexes</Text>
+                <Text style={[styles.align20, styles.bold]}>Réflexes</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -147,7 +159,9 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.locks_and_traps}
                   characteristic="locks_and_traps"
                 />
-                <Text style={styles.align20}>Serrures et pièges</Text>
+                <Text style={[styles.align20, styles.bold]}>
+                  Serrures et pièges
+                </Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -156,7 +170,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.treating}
                   characteristic="treating"
                 />
-                <Text style={styles.align20}>Soigner</Text>
+                <Text style={[styles.align20, styles.bold]}>Soigner</Text>
               </View>
               <View style={styles.row_alignCenter_gap10}>
                 <SlidingBar_Controller
@@ -165,7 +179,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
                   initialValue={skills.stealing}
                   characteristic="stealing"
                 />
-                <Text style={styles.align20}>Voler</Text>
+                <Text style={[styles.align20, styles.bold]}>Voler</Text>
               </View>
             </View>
           ) : (

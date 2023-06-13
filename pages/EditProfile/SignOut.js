@@ -6,10 +6,15 @@ export default SignOut = () => {
   return (
     <View style={[styles.px4_stretch, styles.mt40]}>
       <TouchableOpacity
-        style={[styles.btnForms, styles.bg_black]}
+        style={{
+          padding: 12,
+          borderRadius: 12,
+          borderWidth: 1,
+          borderColor: "#736A65",
+        }}
         onPress={() => supabase.auth.signOut()}
       >
-        <Text style={[styles.align20_white, styles.bold]}>Déconnexion</Text>
+        <Text style={[styles.align20_chestnut]}>Déconnexion</Text>
       </TouchableOpacity>
     </View>
   );

@@ -79,19 +79,20 @@ export default function EditProfilePage({ session }) {
       imageStyle={{ opacity: 0.5 }}
     >
       <View>
-        <View style={styles.px4_stretch}>
+        {/* <View style={styles.px4_stretch}>
           <Input
             label={<Text style={styles.left20}>Email</Text>}
             value={session?.user?.email}
             disabled
           />
-        </View>
+        </View> */}
         <View style={[styles.row]}>
           <View style={styles.input}>
             <Text style={styles.left20}>Nom</Text>
             <Input
               value={characterName || ""}
               onChangeText={(text) => setCharacterName({ text })}
+              color="#736A65"
             />
           </View>
 
@@ -100,6 +101,7 @@ export default function EditProfilePage({ session }) {
             <Input
               value={characterAge.toString()}
               keyboardType="numeric"
+              color="#736A65"
               onChangeText={(text) => {
                 const numericValue = parseInt(text, 10);
                 setCharacterAge(Number.isNaN(numericValue) ? 0 : numericValue);
@@ -108,18 +110,19 @@ export default function EditProfilePage({ session }) {
           </View>
         </View>
 
-        <Text style={styles.left20}>Classe</Text>
         <DropDownPicker
-          style={styles.lightgray_noBorder}
+          style={styles.beige_noBorder}
           open={open}
           value={characterClasse}
           items={objClasses}
           setOpen={setOpen}
           setValue={setCharacterClasse}
           setItems={setObjClasses}
-          dropDownContainerStyle={[styles.lightgray_noBorder]}
+          dropDownContainerStyle={[styles.beige_noBorder]}
+          textStyle={styles.chestnut}
+          placeholder="Classe du personnage"
         />
-        <View style={[styles.px4_stretch]}>
+        <View style={[styles.px4_stretch, styles.mt20]}>
           <TouchableOpacity
             style={styles.btnForms}
             onPress={() => {
@@ -128,7 +131,7 @@ export default function EditProfilePage({ session }) {
               setLoading(false);
             }}
           >
-            <Text style={[styles.left20]}>
+            <Text style={[styles.align20, styles.bold, styles.beige]}>
               {loading ? "Chargement ..." : "Valider"}
             </Text>
           </TouchableOpacity>

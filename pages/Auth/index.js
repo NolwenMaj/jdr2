@@ -5,6 +5,7 @@ import styles from "../../assets/styles";
 import mapBackground from "../../assets/map.jpg";
 import signUpWithEmail from "./SignUp";
 import signInWithEmail from "./SignIn";
+import { color } from "react-native-elements/dist/helpers";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -20,18 +21,27 @@ export default function Auth() {
     >
       <View style={[styles.px4_stretch, styles.mt20]}>
         <Input
-          label={<Text style={styles.align20}>Email</Text>}
-          leftIcon={{ type: "font-awesome", name: "envelope" }}
+          placeholder=" Email"
+          leftIcon={{
+            type: "font-awesome",
+            name: "envelope",
+            color: "#736A65",
+          }}
+          style={{ color: "#736A65" }}
           onChangeText={(text) => setEmail(text)}
           value={email}
+          color="#736A65"
           autoCapitalize={"none"}
-          labelStyle=""
+          inputStyle={{ color: "#736A65" }}
+          labelStyle={styles.align20_chestnut}
+          containerStyle={"color: '#736A65'"}
         />
       </View>
       <View style={styles.px4_stretch}>
         <Input
-          label={<Text style={styles.align20}>Mot de passe</Text>}
-          leftIcon={{ type: "font-awesome", name: "lock" }}
+          placeholder="Mot de passe"
+          leftIcon={{ type: "font-awesome", name: "lock", color: "#736A65" }}
+          inputStyle={{ color: "#736A65" }}
           onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
@@ -54,7 +64,7 @@ export default function Auth() {
               });
           }}
         >
-          <Text style={[styles.align20, styles.bold]}>Connexion</Text>
+          <Text style={[styles.align20, styles.bold, styles.beige]}>Connexion</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.px4_stretch}>
@@ -64,7 +74,7 @@ export default function Auth() {
             padding: 12,
             borderRadius: 12,
             borderWidth: 1,
-            borderColor: "gray",
+            borderColor: "#736A65",
           }}
           disabled={loading}
           onPress={() => {
@@ -78,7 +88,7 @@ export default function Auth() {
               });
           }}
         >
-          <Text style={[styles.align20]}>Inscription</Text>
+          <Text style={[styles.align20_chestnut]}>Inscription</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
