@@ -34,11 +34,11 @@ export default function Profile_View({ session, navigation }) {
       imageStyle={{ opacity: 0.5 }}
     >
       <ScrollView>
-        <View style={[styles.map_center]}>
-          <View style={{ position: "absolute", top: 10, right: 10 }}>
+        <View style={[styles.map_center, { marginTop: 10 }]}>
+          <View style={{ position: "absolute", right: 30, top: 40 }}>
             <AntDesign
               name="setting"
-              size={60}
+              size={40}
               color="#736A65"
               onPress={() => {
                 navigation.navigate("Account", {

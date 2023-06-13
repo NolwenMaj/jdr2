@@ -8,20 +8,24 @@ const Tab = createBottomTabNavigator();
 import DicePage from "../pages/Dice/index";
 import SkillsPage from "../pages/Skills/index";
 import StackProfile from "./StackProfile";
+import ProfilePage from "../pages/Profile";
 
 export default function Navigator({ session }) {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          headerTintColor: "grey",
+          tabBarActiveTintColor: "#029E98",
+          tabBarInactiveTintColor: "#736A65",
+          tabBarHideOnKeyboard: true,
+          tabBarStyle: { backgroundColor: "#F4EFE8" },
+          headerShown: false,
         }}
       >
         <Tab.Screen
           name="StackProfile"
           options={() => ({
             title: "Profile",
-            headerShown: false,
             session: session,
           })}
         >
@@ -29,7 +33,10 @@ export default function Navigator({ session }) {
         </Tab.Screen>
         <Tab.Screen
           name="Dice"
-          options={() => ({ title: "Dés", session: session })}
+          options={() => ({
+            title: "Dés",
+            session: session,
+          })}
         >
           {(props) => <DicePage {...props} session={session} />}
         </Tab.Screen>

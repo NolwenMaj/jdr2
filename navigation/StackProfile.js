@@ -1,18 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ProfilePage from "../pages/Profile";
+import ProfilePage from "../pages/Profile/index";
 import EditProfilePage from "../pages/EditProfile/index";
+
 const Stack = createNativeStackNavigator();
 
 export default StackProfile = ({ session }) => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTintColor: "grey",
-        headerTitleStyle: {
-          fontSize: 15,
-        },
-      }}
-    >
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="Profile"
         options={() => ({
@@ -24,8 +18,11 @@ export default StackProfile = ({ session }) => {
       <Stack.Screen
         name="Account"
         options={() => ({
-          title: "Compte",
+          title: "",
           session: session,
+          headerShown: true,
+          headerTransparent: true,
+          headerTintColor: "#736A65",
         })}
       >
         {(props) => <EditProfilePage {...props} session={session} />}

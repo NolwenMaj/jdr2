@@ -11,7 +11,7 @@ export default Skills_View = ({ skills, session, navigation }) => {
       imageStyle={{ opacity: 0.5 }}
     >
       <ScrollView>
-        <View style={[styles.map_center]}>
+        <View style={[styles.map_center, { marginTop: 30 }]}>
           {skills ? (
             <View key={skills.id}>
               <View style={styles.row_alignCenter_gap10}>

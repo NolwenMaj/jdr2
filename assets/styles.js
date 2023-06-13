@@ -17,7 +17,11 @@ export default styles = StyleSheet.create({
   },
 
   // background
-  map_center: { flex: 1, alignItems: "center" },
+  map_center: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 30,
+  },
   map: { flex: 1 },
   bg_black: {
     backgroundColor: "black",

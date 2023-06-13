@@ -20,7 +20,7 @@ export default DicePage = () => {
           style={[
             styles.diceBoard,
             {
-              height: useWindowDimensions().height * 0.55,
+              height: useWindowDimensions().height * 0.6,
               width: useWindowDimensions().width * 0.8,
               marginBottom: 20,
             },
