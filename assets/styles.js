@@ -54,10 +54,16 @@ export default styles = StyleSheet.create({
   bold: { fontWeight: "500" },
 
   //btns
-  btnForms: {
+  btnBackground: {
     padding: 12,
     borderRadius: 12,
     backgroundColor: chestnut,
+  },
+  btnBorder: {
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: chestnut,
   },
   roundBtns: {
     width: 60,

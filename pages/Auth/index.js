@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ImageBackground, View, TouchableOpacity, Text } from "react-native";
+import {
+  ImageBackground,
+  View,
+  TouchableOpacity,
+  Text,
+  Alert,
+} from "react-native";
 import { Input } from "react-native-elements";
 import styles from "../../assets/styles";
 import mapBackground from "../../assets/map.jpg";
@@ -51,7 +57,7 @@ export default function Auth() {
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign in"
-          style={styles.btnForms}
+          style={styles.btnBackground}
           disabled={loading}
           onPress={() => {
             setLoading(true);
@@ -64,18 +70,15 @@ export default function Auth() {
               });
           }}
         >
-          <Text style={[styles.align20, styles.bold, styles.beige]}>Connexion</Text>
+          <Text style={[styles.align20, styles.bold, styles.beige]}>
+            Connexion
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.px4_stretch}>
         <TouchableOpacity
           title="Sign up"
-          style={{
-            padding: 12,
-            borderRadius: 12,
-            borderWidth: 1,
-            borderColor: "#736A65",
-          }}
+          style={styles.btnBorder}
           disabled={loading}
           onPress={() => {
             setLoading(true);

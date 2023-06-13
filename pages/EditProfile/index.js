@@ -120,11 +120,11 @@ export default function EditProfilePage({ session }) {
           setItems={setObjClasses}
           dropDownContainerStyle={[styles.beige_noBorder]}
           textStyle={styles.chestnut}
-          placeholder="Classe du personnage"
+          placeholder="Classe"
         />
         <View style={[styles.px4_stretch, styles.mt20]}>
           <TouchableOpacity
-            style={styles.btnForms}
+            style={styles.btnBackground}
             onPress={() => {
               setLoading(true);
               updateCharacteristic();

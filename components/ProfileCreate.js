@@ -81,15 +81,15 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
     >
       <KeyboardAvoidingView style={styles.keyboardContainer} behavior="padding">
         <View style={{ width: 300, paddingTop: 20 }}>
-          <View>
-            <Text style={styles.left20}>Nom</Text>
+          <Text style={styles.align30}>Création du personnage </Text>
+          <View style={{ width: 300, paddingTop: 20 }}>
             <Input
+              color="#736A65"
               value={characterName || ""}
+              placeholder="Prénom et Nom "
               onChangeText={(text) => setCharacterName(text)}
             />
           </View>
-
-          <Text style={styles.left20}>Classe</Text>
           <DropDownPicker
             style={styles.beige_noBorder}
             open={open}
@@ -99,11 +99,14 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
             setValue={setCharacterClasse}
             setItems={setObjClasses}
             dropDownContainerStyle={[styles.beige_noBorder]}
+            textStyle={styles.chestnut}
+            placeholder="Classe du personnage"
           />
           <View style={[styles.row, { paddingTop: 20 }]}>
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Age</Text>
               <Input
+                color="#736A65"
+                placeholder="Age"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -114,8 +117,9 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
               />
             </View>
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Force</Text>
               <Input
+                color="#736A65"
+                placeholder="Force"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -126,8 +130,9 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
               />
             </View>
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Dextérité</Text>
               <Input
+                color="#736A65"
+                placeholder="Dextérité"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -140,8 +145,9 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
           </View>
           <View style={styles.row}>
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Endurance</Text>
               <Input
+                color="#736A65"
+                placeholder="Endurance"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -151,10 +157,10 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
                 }}
               />
             </View>
-
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Intelligence</Text>
               <Input
+                color="#736A65"
+                placeholder="Intelligence"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -165,8 +171,9 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
               />
             </View>
             <View style={{ minWidth: 100 }}>
-              <Text style={styles.left20}>Charisme</Text>
               <Input
+                color="#736A65"
+                placeholder="Charisme"
                 keyboardType="numeric"
                 onChangeText={(text) => {
                   const numericValue = parseInt(text, 10);
@@ -179,7 +186,7 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
           </View>
           <View>
             <TouchableOpacity
-              style={styles.btnForms}
+              style={styles.btnBackground}
               onPress={() => {
                 setLoading(true);
                 createCharacteristic()
@@ -191,7 +198,7 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
                   });
               }}
             >
-              <Text style={[styles.left20]}>
+              <Text style={[styles.align20, styles.bold, styles.beige]}>
                 {loading ? "Chargement ..." : "Valider"}
               </Text>
             </TouchableOpacity>

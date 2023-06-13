@@ -17,7 +17,7 @@ export default function signInWithEmail(password, email) {
       }
     } catch (error) {
       console.error(error);
-      Alert.alert("An error occurred while signing in.");
+      Alert.alert("Il y a eu un problème lors de la connexion.");
       reject(error);
     }
   });

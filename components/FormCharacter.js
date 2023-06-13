@@ -177,7 +177,7 @@
 //             </View>
 //             <View>
 //               <TouchableOpacity
-//                 style={styles.btnForms}
+//                 style={styles.btnBackground}
 //                 onPress={() => {
 //                   setLoading(true);
 //                   createCharacteristic()
