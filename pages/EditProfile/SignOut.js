@@ -1,5 +1,5 @@
 import { supabase } from "../../lib/supabase";
-import styles from "../../lib/styles.js";
+import styles from "../../assets/styles.js";
 import { View, TouchableOpacity, Text } from "react-native";
 
 export default SignOut = () => {

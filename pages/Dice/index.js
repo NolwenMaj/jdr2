@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, useWindowDimensions, ImageBackground } from "react-native";
-import styles from "../../lib/styles";
-import mapBackground from "../../assets/map.png";
+import styles from "../../assets/styles";
+import mapBackground from "../../assets/mapCenter.jpg";
 import ButtonDices from "./ButtonDices";
 
 export default DicePage = () => {

@@ -10,7 +10,7 @@ import { Input } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import DropDownPicker from "react-native-dropdown-picker";
 import create from "../crud/create";
-import styles from "../lib/styles";
+import styles from "../assets/styles";
 import mapBackground from "../assets/map.png";
 import generateSkills from "../lib/generateSkills";
 
@@ -191,7 +191,7 @@ export default ProfileCreate = ({ session, handleCharacterCreated }) => {
                   });
               }}
             >
-              <Text style={[styles.left20, styles.bold]}>
+              <Text style={[styles.left20]}>
                 {loading ? "Chargement ..." : "Valider"}
               </Text>
             </TouchableOpacity>

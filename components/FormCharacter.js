@@ -189,7 +189,7 @@
 //                     });
 //                 }}
 //               >
-//                 <Text style={[styles.left20, styles.bold]}>
+//                 <Text style={[styles.left20, ]}>
 //                   {loading ? "Chargement ..." : "Valider"}
 //                 </Text>
 //               </TouchableOpacity>

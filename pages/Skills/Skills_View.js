@@ -1,7 +1,7 @@
 import { ImageBackground, Text, View, ScrollView } from "react-native";
 import SlidingBar_Controller from "../../components/SlidingBar_Controller";
-import styles from "../../lib/styles.js";
-import mapBackground from "../../assets/map.png";
+import styles from "../../assets/styles.js";
+import mapBackground from "../../assets/mapRight.jpg";
 
 export default Skills_View = ({ skills, session, navigation }) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Animated, PanResponder, Text } from "react-native";
-import styles from "../lib/styles";
+import styles from "../assets/styles";
 
 export default SlidingBar_View = ({ initialValue, onUpdate }) => {
   const [value, setValue] = useState(initialValue);
@@ -47,7 +47,7 @@ export default SlidingBar_View = ({ initialValue, onUpdate }) => {
             },
           ]}
         >
-          <Text style={styles.align20}>{value}</Text>
+          <Text style={[styles.align30, styles.bold]}>{value}</Text>
         </Animated.View>
       </View>
     </View>

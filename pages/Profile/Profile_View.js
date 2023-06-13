@@ -2,9 +2,9 @@ import { Image, ImageBackground, Text, View, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import read from "../../crud/read";
-import styles from "../../lib/styles.js";
+import styles from "../../assets/styles.js";
 import SlidingBar_Controller from "../../components/SlidingBar_Controller";
-import mapBackground from "../../assets/map.png";
+import mapBackground from "../../assets/mapLeft.jpg";
 import Tabatha from "../../assets/Tabatha.jpg";
 
 export default function Profile_View({ session, navigation }) {

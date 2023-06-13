@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { ImageBackground, View, TouchableOpacity, Text } from "react-native";
 import { Input } from "react-native-elements";
-import styles from "../../lib/styles";
-import mapBackground from "../../assets/map.png";
-
+import styles from "../../assets/styles";
+import mapBackground from "../../assets/map.jpg";
 import signUpWithEmail from "./SignUp";
 import signInWithEmail from "./SignIn";
 

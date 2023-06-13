@@ -7,8 +7,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 import read from "../../crud/read";
 import update from "../../crud/update";
 import SignOut from "./SignOut";
-import styles from "../../lib/styles.js";
-import mapBackground from "../../assets/map.png";
+import styles from "../../assets/styles.js";
+import mapBackground from "../../assets/mapLeft.jpg";
 
 export default function EditProfilePage({ session }) {
   const [loading, setLoading] = useState(true);
@@ -128,7 +128,7 @@ export default function EditProfilePage({ session }) {
               setLoading(false);
             }}
           >
-            <Text style={[styles.left20, styles.bold]}>
+            <Text style={[styles.left20]}>
               {loading ? "Chargement ..." : "Valider"}
             </Text>
           </TouchableOpacity>

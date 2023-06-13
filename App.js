@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import { View, StyleSheet } from "react-native";
-import styles from "./lib/styles";
+import styles from "./assets/styles";
 
 import Auth from "./pages/Auth/index";
 import Navigator from "./navigation/Navigator";
